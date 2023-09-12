@@ -1,0 +1,41 @@
+header {
+  display: flex;
+  justify-content: center;
+}
+
+.header {
+  margin: 2.5rem 1rem;
+}
+
+.logo-img {
+  width: 11rem;
+  height: auto;
+}
+
+.categories-container {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: repeat(2, auto);
+  justify-items: center;
+  grid-gap: 2rem 5px;
+}
+
+.category-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.category-name {
+  font-weight: 900;
+  font-size: 40px;
+  text-align: center;
+  margin: 0;
+}
+
+.category-img {
+  display: block;
+  width: 10rem;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
