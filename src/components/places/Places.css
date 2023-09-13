@@ -1,0 +1,33 @@
+.places-container {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: repeat(5, auto);
+  grid-gap: 2rem 0;
+  justify-items: center;
+  margin: 0 5rem;
+}
+
+.place-card {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  border: 1px solid lightslategray;
+  font-size: 1.5em;
+  width: 30rem;
+  margin: 0.5rem 0;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+}
+
+.place-name {
+  font-size: 25px;
+  margin: 0;
+  font-weight: bolder;
+  letter-spacing: 1px;
+}
+
+.place-rating {
+  display: block;
+  margin-top: auto;
+  margin-bottom: auto;
+}
