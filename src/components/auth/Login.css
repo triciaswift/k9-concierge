@@ -5,8 +5,9 @@
   border-radius: 1rem;
 }
 
-.header {
-  font-size: 2rem;
+.login-header {
+  font-size: 4rem;
+  margin: 0;
 }
 
 .auth-form {
