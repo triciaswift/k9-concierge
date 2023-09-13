@@ -26,6 +26,13 @@
   letter-spacing: 1px;
 }
 
+.place-card:hover {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
 .place-rating {
   display: block;
   margin-top: auto;

@@ -1,5 +1,5 @@
-export const getAllPlaces = () => {
-  return fetch(`http://localhost:8088/places?_embed=reviews`).then((res) =>
-    res.json()
-  );
+export const getPlacesByCategoryId = (categoryId) => {
+  return fetch(
+    `http://localhost:8088/places?categoryId=${categoryId}&_embed=reviews`
+  ).then((res) => res.json());
 };

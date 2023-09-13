@@ -17,6 +17,7 @@ export const ApplicationViews = () => {
       >
         <Route index element={<CategoriesList />} />
         <Route path=":categoryId/:categoryName" element={<PlacesList />} />
+        <Route path="/:category/details" element="Hello" />
       </Route>
     </Routes>
   );
