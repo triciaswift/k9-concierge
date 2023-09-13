@@ -33,13 +33,15 @@ export const PlaceDetails = () => {
         </div>
         <div>
           <span className="place-info">Offered Services: </span>
-          {place.offeredServices?.map((service) => {
-            return (
-              <ul className="services">
-                <li className="service-item">{service}</li>
-              </ul>
-            );
-          })}
+          {place.offeredServices
+            ? place.offeredServices?.map((service) => {
+                return (
+                  <ul className="services">
+                    <li className="service-item">{service}</li>
+                  </ul>
+                );
+              })
+            : `No special services offered`}
         </div>
       </section>
       <section className="reviews-container">
