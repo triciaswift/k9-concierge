@@ -16,7 +16,7 @@ export const CategoriesList = () => {
     <>
       <header>
         <img src={logoPic} alt="K9-Concierge-Logo" className="logo-img" />
-        <h1 className="header">K9 Concierge</h1>
+        <h1 className="header categories-header">K9 Concierge</h1>
         <img src={logoPic} alt="K9-Concierge-Logo" className="logo-img" />
       </header>
       <section className="categories-container">
