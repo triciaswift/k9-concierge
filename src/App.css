@@ -1,80 +1,13 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Quicksand&family=Roboto:wght@100&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Euphoria+Script&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Chewy&display=swap");
-
-/* FONTS
-font-family: "Nunito", sans-serif;
-font-family: "Quicksand", sans-serif;
-font-family: "Roboto", sans-serif; 
-font-family: "Euphoria Script", cursive;
-font-family: "Chewy", cursive;
-*/
-
-/* COLOR PALETTE */
-/* Feel free to change these values and create your own color palette! https://coolors.co/ is a great resource */
-/* :root {
-  --primary: #ffb400;
-  --secondary: #00a6ed;
-  --info: #7fb800;
-  --warning: #f6511d;
-  --white: #ffffff;
-  --offWhite: #f2f2f3;
-  --dark: #3b3b3b;
-  --outline: #c3c0c0;
-  --appBackground: #dddade;
-} */
-
-/* GLOBAL STYLES */
-body,
-button,
-input,
-select,
-textarea {
-  font-family: "Nunito", sans-serif;
-}
-
-body {
-  background-color: var(--appBackground);
-  margin: 0;
-}
-
-h1 {
-  font-family: "Chewy", cursive;
-  letter-spacing: 2px;
-  font-size: 75px;
-}
-
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Quicksand", sans-serif;
-}
-
-a {
-  text-decoration: none;
-}
-/* This prevents all the links in the app from turning purple after visiting */
-a:visited {
-  color: inherit;
-}
-/* This prevents all the inputs in the app from having that blue outline when in focus */
-input:focus {
-  outline: none;
-}
-
-/* GLOBAL STYLING FOR ALL THE BUTTONS BUTTONS */
-button {
-  padding: 0.5rem 1rem;
-  border: 1px solid transparent;
-  border-radius: 0.5rem;
-  color: var(--white);
-  cursor: pointer;
-}
-
 .header {
   text-align: center;
+}
+
+.page-header {
+  font-family: "Euphoria Script", cursive;
+  font-size: 5rem;
+  text-align: center;
+  margin: 1rem 0;
+  letter-spacing: 2px;
 }
 
 /* These are all the color options for the buttons */

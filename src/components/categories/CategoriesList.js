@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./Categories.css";
 import { getAllCategories } from "../../services/categoryService";
 import logoPic from "../../assets/logo-white.png";
+import { Link } from "react-router-dom";
 
 export const CategoriesList = () => {
   const [categories, setCategories] = useState([]);
@@ -24,11 +25,13 @@ export const CategoriesList = () => {
           return (
             <div className="category-card" key={category.id}>
               <h2 className="category-name">{category.name}</h2>
-              <img
-                src={category.imageUrl}
-                alt={category.name}
-                className="category-img"
-              />
+              <Link to={`/${category.id}/${category.name}`}>
+                <img
+                  src={category.imageUrl}
+                  alt={category.name}
+                  className="category-img"
+                />
+              </Link>
             </div>
           );
         })}
