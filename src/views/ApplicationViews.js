@@ -42,6 +42,7 @@ export const ApplicationViews = () => {
         </Route>
         <Route path="review/new" element="Add Review Form" />
         <Route path="review/edit/:reviewId" element="Edit Review Form" />
+        <Route path="place/new" element="Add Place Form" />
       </Route>
     </Routes>
   );
