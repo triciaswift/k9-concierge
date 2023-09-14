@@ -37,7 +37,7 @@ export const PlacesList = () => {
               className="place-card"
               key={placeObj.id}
               onClick={() => {
-                navigate(`/${placeObj.id}/details`);
+                navigate(`/details/${placeObj.id}`);
               }}
             >
               <div className="place-name">{placeObj.name}</div>

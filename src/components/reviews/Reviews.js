@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import "./Reviews.css";
 import { getReviewById } from "../../services/reviewService";
+import { useNavigate } from "react-router-dom";
 
 export const Reviews = ({ reviewId, currentUser }) => {
   const [review, setReview] = useState({});
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     getReviewById(reviewId).then((reviewObj) => {
@@ -14,7 +17,12 @@ export const Reviews = ({ reviewId, currentUser }) => {
   return (
     <div className="review-card">
       <div className="review-group">
-        <div>
+        <div
+          className="review-name"
+          onClick={() => {
+            navigate(`/profile/${review.userId}`);
+          }}
+        >
           <span className="review-info">Name: </span>
           {review.user?.fullName}
         </div>
