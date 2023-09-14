@@ -32,7 +32,7 @@ export const CategoriesList = () => {
                 alt={category.name}
                 className="category-img"
                 onClick={() => {
-                  navigate(`/${category.id}/${category.name}`);
+                  navigate(`/category/${category.id}/${category.name}`);
                 }}
               />
             </div>
