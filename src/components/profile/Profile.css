@@ -1,0 +1,33 @@
+.user-container {
+  text-align: center;
+}
+
+.user-info {
+  font-size: 25px;
+  margin: 2rem 0 4rem 0;
+}
+
+.dog-container {
+  display: flex;
+  justify-content: center;
+}
+
+.dog-info {
+  margin: auto 2rem auto 0;
+}
+
+.dog-name {
+  font-size: 3.5rem;
+  margin: 0;
+}
+
+.dog-breed {
+  font-size: 1.5em;
+  margin-top: 0;
+}
+
+.dog-img {
+  width: 300px;
+  height: auto;
+  border-radius: 20px;
+}

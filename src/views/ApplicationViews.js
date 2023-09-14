@@ -4,6 +4,7 @@ import { NavBar } from "../components/navbar/NavBar";
 import { PlacesList } from "../components/places/PlacesList";
 import { PlaceDetails } from "../components/places/PlaceDetails";
 import { useEffect, useState } from "react";
+import { Profile } from "../components/profile/Profile";
 
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({});
@@ -35,7 +36,10 @@ export const ApplicationViews = () => {
           path="/details/:placeId"
           element={<PlaceDetails currentUser={currentUser} />}
         />
-        <Route path="/profile/:userId" element="Hello" />
+        <Route
+          path="/profile/:userId"
+          element={<Profile currentUser={currentUser} />}
+        />
       </Route>
     </Routes>
   );
