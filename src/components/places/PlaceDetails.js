@@ -20,41 +20,47 @@ export const PlaceDetails = () => {
       <h2 className="page-header">{place.name}</h2>
       <section className="place-container">
         <div>
-          <span className="place-info">Address: </span>
-          {place.address}
+          <div>
+            <span className="place-info">Address: </span>
+            {place.address}
+          </div>
+          <div>
+            <span className="place-info">Phone Number: </span>
+            615-{place.phoneNumber}
+          </div>
+          <div>
+            <span className="place-info">Website: </span>
+            {place.website}
+          </div>
         </div>
-        <div>
-          <span className="place-info">Phone Number: </span>
-          615-{place.phoneNumber}
-        </div>
-        <div>
-          <span className="place-info">Website: </span>
-          {place.website}
-        </div>
-        <div>
+        <div className="place-description">
           <span className="place-info">Offered Services: </span>
-          {place.offeredServices
-            ? place.offeredServices?.map((service) => {
-                return (
-                  <ul className="services">
-                    <li className="service-item">{service}</li>
-                  </ul>
-                );
-              })
-            : `No special services offered`}
+          <ul className="services">
+            {place.offeredServices
+              ? place.offeredServices?.map((service, index) => {
+                  return (
+                    <li className="service-item" key={index}>
+                      {service}
+                    </li>
+                  );
+                })
+              : `No special services offered, call for more details`}
+          </ul>
         </div>
       </section>
       <section className="reviews-container">
-        <header>
-          <h2 className="page-header">
-            Reviews
-            <button>Add Review</button>
-          </h2>
+        <header className="header-container">
+          <h2 className="page-header review-header">Reviews</h2>
+          <div className="btn-container">
+            <button className="btn btn-secondary">Add Review</button>
+          </div>
         </header>
         <div className="reviews">
-          {place.reviews?.map((review) => {
-            return <Reviews reviewId={review.id} key={review.id} />;
-          })}
+          {place.reviews
+            ? place.reviews.map((review) => {
+                return <Reviews reviewId={review.id} key={review.id} />;
+              })
+            : ""}
         </div>
       </section>
     </>

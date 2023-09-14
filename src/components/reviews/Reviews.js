@@ -13,17 +13,19 @@ export const Reviews = ({ reviewId }) => {
 
   return (
     <div className="review-card">
-      <div>
-        <span className="review-info">Name: </span>
-        {review.user?.fullName}
-      </div>
-      <div>
-        <span className="review-info">Date: </span>
-        {review.date}
+      <div className="review-group">
+        <div>
+          <span className="review-info">Name: </span>
+          {review.user?.fullName}
+        </div>
+        <div>
+          <span className="review-info">Date: </span>
+          {review.date}
+        </div>
       </div>
       <div>
         <span className="review-info">Rating: </span>
-        {review.rating}
+        {review.rating} Stars
       </div>
       <div>
         <span className="review-info">Review: </span>

@@ -42,7 +42,9 @@ export const PlacesList = () => {
             >
               <div className="place-name">{placeObj.name}</div>
               <div className="place-rating">
-                {handleRatingAverage(placeObj)} Stars
+                {handleRatingAverage(placeObj)
+                  ? `${handleRatingAverage(placeObj)} Stars`
+                  : "No ratings yet"}
               </div>
             </div>
           );

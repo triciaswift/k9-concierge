@@ -12,7 +12,7 @@ font-family: "Chewy", cursive;
 
 /* COLOR PALETTE */
 /* Feel free to change these values and create your own color palette! https://coolors.co/ is a great resource */
-/* :root {
+:root {
   --primary: #ffb400;
   --secondary: #00a6ed;
   --info: #7fb800;
@@ -22,7 +22,7 @@ font-family: "Chewy", cursive;
   --dark: #3b3b3b;
   --outline: #c3c0c0;
   --appBackground: #dddade;
-} */
+}
 
 /* GLOBAL STYLES */
 body,
@@ -62,6 +62,11 @@ a:visited {
 /* This prevents all the inputs in the app from having that blue outline when in focus */
 input:focus {
   outline: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
 }
 
 /* GLOBAL STYLING FOR ALL THE BUTTONS BUTTONS */
