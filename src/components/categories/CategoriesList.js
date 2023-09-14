@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./Categories.css";
 import { getAllCategories } from "../../services/categoryService";
-import logoPic from "../../assets/logo-white.png";
+import logoPic from "../../assets/logo.png";
 import { useNavigate } from "react-router-dom";
 
 export const CategoriesList = () => {

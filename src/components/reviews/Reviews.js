@@ -41,7 +41,14 @@ export const Reviews = ({ reviewId, currentUser }) => {
       </div>
       {currentUser.id === review.userId ? (
         <div className="btn-container-two">
-          <button className="btn btn-secondary">Edit</button>
+          <button
+            className="btn btn-secondary"
+            onClick={() => {
+              navigate(`/review/edit/${review.id}`);
+            }}
+          >
+            Edit
+          </button>
           <button className="btn btn-warning">Delete</button>
         </div>
       ) : (

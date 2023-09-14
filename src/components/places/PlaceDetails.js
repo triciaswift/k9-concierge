@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import "./Places.css";
 import { getPlaceById } from "../../services/placeService";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Reviews } from "../reviews/Reviews";
 
 export const PlaceDetails = ({ currentUser }) => {
   const [place, setPlace] = useState({});
 
   const { placeId } = useParams(); // this is a string
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     getPlaceById(placeId).then((placeObj) => {
@@ -52,7 +54,14 @@ export const PlaceDetails = ({ currentUser }) => {
         <header className="header-container">
           <h2 className="page-header review-header">Reviews</h2>
           <div className="btn-container">
-            <button className="btn btn-primary">Add Review</button>
+            <button
+              className="btn btn-primary"
+              onClick={() => {
+                navigate(`/review/new`);
+              }}
+            >
+              Add Review
+            </button>
           </div>
         </header>
         <div className="reviews">

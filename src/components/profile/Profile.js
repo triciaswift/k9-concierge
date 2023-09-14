@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./Profile.css";
 import { useEffect, useState } from "react";
 import { getUserById } from "../../services/userService";
@@ -6,6 +6,8 @@ import { getUserById } from "../../services/userService";
 export const Profile = ({ currentUser }) => {
   const { userId } = useParams();
   const [user, setUser] = useState({});
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     getUserById(userId).then((userObj) => {
@@ -29,7 +31,14 @@ export const Profile = ({ currentUser }) => {
           )}
           {user.dogBreed ? <h3 className="dog-breed">{user.dogBreed}</h3> : ""}
           {currentUser.id === parseInt(userId) ? (
-            <button className="btn btn-primary">Edit Profile</button>
+            <button
+              className="btn btn-primary"
+              onClick={() => {
+                navigate(`/profile/${userId}/edit`);
+              }}
+            >
+              Edit Profile
+            </button>
           ) : (
             ""
           )}
