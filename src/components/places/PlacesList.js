@@ -6,7 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 export const PlacesList = () => {
   const [places, setPlaces] = useState([]);
 
-  const { categoryId, categoryName } = useParams();
+  const { categoryId, categoryName } = useParams(); // this is a string
 
   const navigate = useNavigate();
 
@@ -28,7 +28,7 @@ export const PlacesList = () => {
   };
 
   return (
-    <div>
+    <>
       <h2 className="page-header">{categoryName}</h2>
       <section className="places-container">
         {places.map((placeObj) => {
@@ -42,12 +42,14 @@ export const PlacesList = () => {
             >
               <div className="place-name">{placeObj.name}</div>
               <div className="place-rating">
-                {handleRatingAverage(placeObj)} Stars
+                {handleRatingAverage(placeObj)
+                  ? `${handleRatingAverage(placeObj)} Stars`
+                  : "No ratings yet"}
               </div>
             </div>
           );
         })}
       </section>
-    </div>
+    </>
   );
 };

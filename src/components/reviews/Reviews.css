@@ -1,0 +1,20 @@
+.review-card {
+  background-color: white;
+  border: 1px solid lightslategray;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  margin: 2rem;
+  width: 35rem;
+}
+
+.review-info {
+  font-family: "Roboto", sans-serif;
+  color: var(--info);
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.review-group {
+  display: flex;
+  justify-content: space-between;
+}

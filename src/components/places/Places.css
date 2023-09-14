@@ -10,8 +10,8 @@
 .place-card {
   display: flex;
   justify-content: space-between;
-  background-color: white;
-  border: 1px solid lightslategray;
+  background-color: var(--white);
+  border: 1px solid var(--outline);
   font-size: 1.5em;
   width: 30rem;
   margin: 0.5rem 0;
@@ -37,4 +37,51 @@
   display: block;
   margin-top: auto;
   margin-bottom: auto;
+}
+
+.place-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: var(--white);
+  border: 1px solid var(--outline);
+  border-radius: 0.5rem;
+  padding: 2rem;
+  margin: 2rem auto 5rem auto;
+  width: 40rem;
+}
+
+.place-info {
+  font-family: "Roboto", sans-serif;
+  color: var(--info);
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.place-description {
+  text-align: center;
+  border: 2px dotted var(--outline);
+  padding: 1.5rem;
+  width: 15rem;
+}
+
+.review-header {
+  margin: 0 0 0 2rem;
+}
+
+.header-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.btn-container {
+  margin: auto 0 auto 2rem;
+}
+
+.reviews {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: repeat(10, auto);
+  justify-items: center;
 }
