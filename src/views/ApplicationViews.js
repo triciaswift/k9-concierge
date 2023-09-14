@@ -22,24 +22,26 @@ export const ApplicationViews = () => {
         path="/"
         element={
           <>
-            <NavBar />
+            <NavBar currentUser={currentUser} />
             <Outlet />
           </>
         }
       >
         <Route index element={<CategoriesList />} />
         <Route
-          path="/category/:categoryId/:categoryName"
+          path="category/:categoryId/:categoryName"
           element={<PlacesList />}
         />
         <Route
-          path="/details/:placeId"
+          path="details/:placeId"
           element={<PlaceDetails currentUser={currentUser} />}
         />
-        <Route
-          path="/profile/:userId"
-          element={<Profile currentUser={currentUser} />}
-        />
+        <Route path="profile/:userId">
+          <Route index element={<Profile currentUser={currentUser} />} />
+          <Route path="edit" element="Edit Profile Form" />
+        </Route>
+        <Route path="review/new" element="Add Review Form" />
+        <Route path="review/edit/:reviewId" element="Edit Review Form" />
       </Route>
     </Routes>
   );
