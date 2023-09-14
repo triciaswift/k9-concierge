@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./Reviews.css";
 import { getReviewById } from "../../services/reviewService";
 
-export const Reviews = ({ reviewId }) => {
+export const Reviews = ({ reviewId, currentUser }) => {
   const [review, setReview] = useState({});
 
   useEffect(() => {
@@ -31,6 +31,14 @@ export const Reviews = ({ reviewId }) => {
         <span className="review-info">Review: </span>
         {review.body}
       </div>
+      {currentUser.id === review.userId ? (
+        <div className="btn-container-two">
+          <button className="btn btn-secondary">Edit</button>
+          <button className="btn btn-warning">Delete</button>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

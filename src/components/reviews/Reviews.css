@@ -18,3 +18,9 @@
   display: flex;
   justify-content: space-between;
 }
+
+.btn-container-two {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}

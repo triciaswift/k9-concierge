@@ -4,7 +4,7 @@ import { getPlaceById } from "../../services/placeService";
 import { useParams } from "react-router-dom";
 import { Reviews } from "../reviews/Reviews";
 
-export const PlaceDetails = () => {
+export const PlaceDetails = ({ currentUser }) => {
   const [place, setPlace] = useState({});
 
   const { placeId } = useParams(); // this is a string
@@ -52,13 +52,19 @@ export const PlaceDetails = () => {
         <header className="header-container">
           <h2 className="page-header review-header">Reviews</h2>
           <div className="btn-container">
-            <button className="btn btn-secondary">Add Review</button>
+            <button className="btn btn-primary">Add Review</button>
           </div>
         </header>
         <div className="reviews">
           {place.reviews
             ? place.reviews.map((review) => {
-                return <Reviews reviewId={review.id} key={review.id} />;
+                return (
+                  <Reviews
+                    reviewId={review.id}
+                    currentUser={currentUser}
+                    key={review.id}
+                  />
+                );
               })
             : ""}
         </div>
