@@ -44,7 +44,7 @@ fieldset {
   display: flex;
   justify-content: space-between;
   width: 300px;
-  font-size: 1.17em;
+  /* font-size: 1.17em; */
 }
 
 .form-body {

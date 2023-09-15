@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import "./Form.css";
-import { useParams } from "react-router-dom";
-import { getReviewById } from "../../services/reviewService";
+import { useNavigate, useParams } from "react-router-dom";
+import { editReview, getReviewById } from "../../services/reviewService";
 
 export const EditReview = () => {
   const [review, setReview] = useState({});
-
   const { reviewId } = useParams();
+  const navigate = useNavigate();
 
   const ratingNumbers = [1, 2, 3, 4, 5];
 
@@ -20,6 +20,37 @@ export const EditReview = () => {
     const reviewCopy = { ...review };
     reviewCopy[event.target.name] = event.target.value;
     setReview(reviewCopy);
+  };
+
+  const handleDate = () => {
+    const currentDate = new Date();
+
+    // Extract year, month, and day components
+    const year = currentDate.getFullYear();
+    const month = String(currentDate.getMonth() + 1).padStart(2, "0"); // Month is 0-based, so add 1
+    const day = String(currentDate.getDate()).padStart(2, "0");
+
+    // Create the formatted date string
+    const formattedDate = `${year}-${month}-${day}`;
+
+    return formattedDate;
+  };
+
+  const handleSave = (event) => {
+    event.preventDefault();
+
+    const updateReview = {
+      id: review.id,
+      rating: parseInt(review.rating),
+      body: review.body,
+      date: handleDate(),
+      userId: review.userId,
+      placeId: review.placeId,
+    };
+
+    editReview(updateReview).then(() => {
+      navigate(`/details/${review.placeId}`);
+    });
   };
 
   return (
@@ -60,7 +91,9 @@ export const EditReview = () => {
         </div>
       </fieldset>
       <div className="form-group">
-        <button className="form-btn btn-secondary">Edit Review</button>
+        <button className="form-btn btn-secondary" onClick={handleSave}>
+          Save Review
+        </button>
       </div>
     </form>
   );
