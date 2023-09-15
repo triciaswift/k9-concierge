@@ -19,3 +19,13 @@ export const getUserById = (userId) => {
     (res) => res.json()
   );
 };
+
+export const editUser = (user) => {
+  return fetch(`http://localhost:8088/users/${user.id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(user),
+  });
+};
