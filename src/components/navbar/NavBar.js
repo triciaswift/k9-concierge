@@ -4,15 +4,13 @@ import "./NavBar.css";
 export const NavBar = ({ currentUser }) => {
   const navigate = useNavigate();
 
-  const profile = `/profile/${currentUser.id}`;
-
   return (
     <ul className="navbar">
       <li className="navbar-item">
         <Link to="/">Home</Link>
       </li>
       <li className="navbar-item">
-        <Link to={profile}>Profile</Link>
+        <Link to={`/profile/${currentUser.id}`}>Profile</Link>
       </li>
       <li className="navbar-item">
         <Link to="/place/new">New Place</Link>
