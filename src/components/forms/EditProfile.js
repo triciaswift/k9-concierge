@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import "./Form.css";
-import { getUserById } from "../../services/userService";
+import { editUser, getUserById } from "../../services/userService";
+import { useNavigate } from "react-router-dom";
 
 export const EditProfile = ({ currentUser }) => {
   const [user, setUser] = useState({});
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     getUserById(currentUser.id).then((userObj) => {
@@ -15,6 +18,23 @@ export const EditProfile = ({ currentUser }) => {
     const userCopy = { ...user };
     userCopy[event.target.name] = event.target.value;
     setUser(userCopy);
+  };
+
+  const handleSave = (event) => {
+    event.preventDefault();
+
+    const updateUser = {
+      id: user.id,
+      fullName: user.fullName,
+      email: user.email,
+      dogBreed: user.dogBreed,
+      dogName: user.dogName,
+      dogUrl: user.dogUrl,
+    };
+
+    editUser(updateUser).then(() => {
+      navigate(`/profile/${user.id}`);
+    });
   };
 
   return (
@@ -64,6 +84,9 @@ export const EditProfile = ({ currentUser }) => {
           onChange={handleInputChange}
         />
       </fieldset>
+      <button className="btn btn-secondary" onClick={handleSave}>
+        Save Profile
+      </button>
     </form>
   );
 };
