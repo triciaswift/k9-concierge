@@ -11,11 +11,15 @@ export const PlaceDetails = ({ currentUser }) => {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
+  const getPlace = () => {
     getPlaceById(placeId).then((placeObj) => {
       setPlace(placeObj);
     });
-  }, [placeId]);
+  };
+
+  useEffect(() => {
+    getPlace();
+  }, []);
 
   return (
     <>
@@ -71,6 +75,7 @@ export const PlaceDetails = ({ currentUser }) => {
                   <Reviews
                     reviewId={review.id}
                     currentUser={currentUser}
+                    getPlace={getPlace}
                     key={review.id}
                   />
                 );
