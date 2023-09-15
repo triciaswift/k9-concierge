@@ -41,52 +41,58 @@ export const EditProfile = ({ currentUser }) => {
     <form>
       <h2 className="page-header">Edit Profile</h2>
       <fieldset>
-        <div className="form-group"></div>
-        <label>Name</label>
-        <input
-          type="text"
-          name="fullName"
-          value={user.fullName ? user.fullName : ""}
-          className="form-control"
-          onChange={handleInputChange}
-        />
+        <div className="form-group">
+          <label>Name</label>
+          <input
+            type="text"
+            name="fullName"
+            value={user.fullName ? user.fullName : ""}
+            className="form-control"
+            onChange={handleInputChange}
+          />
+        </div>
       </fieldset>
       <fieldset>
-        <div className="form-group"></div>
-        <label>Dog's Name</label>
-        <input
-          type="text"
-          name="dogName"
-          value={user.dogName ? user.dogName : ""}
-          className="form-control"
-          onChange={handleInputChange}
-        />
+        <div className="form-group">
+          <label>Dog's Name</label>
+          <input
+            type="text"
+            name="dogName"
+            value={user.dogName ? user.dogName : ""}
+            className="form-control"
+            onChange={handleInputChange}
+          />
+        </div>
       </fieldset>
       <fieldset>
-        <div className="form-group"></div>
-        <label>Dog's Breed</label>
-        <input
-          type="text"
-          name="dogBreed"
-          value={user.dogBreed ? user.dogBreed : ""}
-          className="form-control"
-          onChange={handleInputChange}
-        />
+        <div className="form-group">
+          <label>Dog's Breed</label>
+          <input
+            type="text"
+            name="dogBreed"
+            value={user.dogBreed ? user.dogBreed : ""}
+            className="form-control"
+            onChange={handleInputChange}
+          />
+        </div>
       </fieldset>
       <fieldset>
-        <div className="form-group"></div>
-        <label>Dog's Picture</label>
-        <input
-          type="text"
-          name="dogUrl"
-          value={user.dogUrl ? user.dogUrl : ""}
-          className="form-control"
-          onChange={handleInputChange}
-        />
+        <div className="form-group">
+          <label>Dog's Picture</label>
+          <input
+            type="text"
+            name="dogUrl"
+            value={user.dogUrl ? user.dogUrl : ""}
+            className="form-control"
+            onChange={handleInputChange}
+          />
+        </div>
       </fieldset>
-      <button className="btn btn-secondary" onClick={handleSave}>
-        Save Profile
-      </button>
+      <div className="form-group">
+        <button className="form-btn btn-secondary" onClick={handleSave}>
+          Save Profile
+        </button>
+      </div>
     </form>
   );
 };

@@ -6,6 +6,7 @@ import { PlaceDetails } from "../components/places/PlaceDetails";
 import { useEffect, useState } from "react";
 import { Profile } from "../components/profile/Profile";
 import { EditProfile } from "../components/forms/EditProfile";
+import { EditReview } from "../components/forms/EditReview";
 
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({});
@@ -45,7 +46,7 @@ export const ApplicationViews = () => {
           />
         </Route>
         <Route path="review/new" element="Add Review Form" />
-        <Route path="review/edit/:reviewId" element="Edit Review Form" />
+        <Route path="review/edit/:reviewId" element={<EditReview />} />
         <Route path="place/new" element="Add Place Form" />
       </Route>
     </Routes>
