@@ -12,3 +12,13 @@ export const deleteReview = (reviewId) => {
     },
   });
 };
+
+export const editReview = (review) => {
+  return fetch(`http://localhost:8088/reviews/${review.id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(review),
+  });
+};
