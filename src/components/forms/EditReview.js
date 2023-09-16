@@ -49,7 +49,7 @@ export const EditReview = () => {
     };
 
     editReview(updateReview).then(() => {
-      navigate(`/details/${review.placeId}`);
+      navigate(`/place/${review.placeId}`);
     });
   };
 

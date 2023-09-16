@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import "./Form.css";
 import { getAllCategories } from "../../services/categoryService";
+import { postPlace } from "../../services/placeService";
+import { useNavigate } from "react-router-dom";
 
 export const NewPlace = ({ currentUser }) => {
   const [allCategories, setAllCategories] = useState([]);
@@ -14,6 +16,8 @@ export const NewPlace = ({ currentUser }) => {
     userId: 0,
   });
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     getAllCategories().then((catArr) => {
       setAllCategories(catArr);
@@ -21,9 +25,32 @@ export const NewPlace = ({ currentUser }) => {
   }, []);
 
   const handleInputChange = (event) => {
-    const reviewCopy = { ...newPlace };
-    reviewCopy[event.target.name] = event.target.value;
-    setNewPlace(reviewCopy);
+    const placeCopy = { ...newPlace };
+    placeCopy[event.target.name] = event.target.value;
+    setNewPlace(placeCopy);
+  };
+
+  const handleSave = (event) => {
+    event.preventDefault();
+    const string = newPlace.offeredServices.replace(", ", ",");
+    const array = string.split(",");
+
+    const placeItem = {
+      name: newPlace.name,
+      address: newPlace.address,
+      phoneNumber: newPlace.phoneNumber,
+      website: newPlace.website,
+      offeredServices: string.split(","),
+      categoryId: parseInt(newPlace.categoryId),
+      userId: currentUser.id,
+    };
+
+    console.log(array);
+    console.log(placeItem);
+
+    postPlace(placeItem).then(() => {
+      navigate(`/category/${newPlace.categoryId}`);
+    });
   };
 
   return (
@@ -103,10 +130,10 @@ export const NewPlace = ({ currentUser }) => {
         <div className="form-group">
           <label>Offered Services:</label>
           <textarea
-            name="body"
+            name="offeredServices"
             rows="4"
             cols="50"
-            value={newPlace.body}
+            value={newPlace.offeredServices}
             className="form-body"
             placeholder="List any services offered (e.g. Vaccines, Surgery, Dental Care, etc.)"
             onChange={handleInputChange}
@@ -114,7 +141,9 @@ export const NewPlace = ({ currentUser }) => {
         </div>
       </fieldset>
       <div className="form-group">
-        <button className="form-btn btn-secondary">Save Review</button>
+        <button className="form-btn btn-secondary" onClick={handleSave}>
+          Save Review
+        </button>
       </div>
     </form>
   );
