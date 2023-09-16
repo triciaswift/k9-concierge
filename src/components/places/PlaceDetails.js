@@ -39,7 +39,7 @@ export const PlaceDetails = ({ currentUser }) => {
           </div>
           <div>
             <span className="place-info">Phone Number: </span>
-            615-{place.phoneNumber}
+            {place.phoneNumber}
           </div>
           <div>
             <span className="place-info">Website: </span>
