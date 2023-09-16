@@ -72,7 +72,7 @@ export const NewReview = ({ currentUser }) => {
       </fieldset>
       <fieldset>
         <div className="form-group">
-          <label>Body</label>
+          <label>Body:</label>
           <textarea
             name="body"
             rows="4"

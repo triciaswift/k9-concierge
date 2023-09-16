@@ -1,15 +1,16 @@
 .navbar {
   display: flex;
   flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
   background-color: var(--dark);
   margin: 0;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
 }
 
 .navbar-item {
-  flex-basis: 20%;
+  flex-basis: 15%;
   list-style-type: none;
-  text-align: center;
   color: var(--offWhite);
 }
 
@@ -21,8 +22,15 @@
 
 .navbar-logout {
   margin-left: auto;
+  text-align: end;
 }
 
 .navbar-link:hover {
   color: var(--primary);
+}
+
+.navbar-img {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-right: 2rem;
 }
