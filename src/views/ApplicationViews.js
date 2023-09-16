@@ -34,7 +34,10 @@ export const ApplicationViews = () => {
         <Route path="category/:categoryId" element={<PlacesList />} />
         <Route path="place/:placeId">
           <Route index element={<PlaceDetails currentUser={currentUser} />} />
-          <Route path="review" element={<NewReview />} />
+          <Route
+            path="review"
+            element={<NewReview currentUser={currentUser} />}
+          />
         </Route>
         <Route path="profile/:userId">
           <Route index element={<Profile currentUser={currentUser} />} />

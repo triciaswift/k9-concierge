@@ -1,8 +1,9 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./Form.css";
 import { useState } from "react";
+import { postReview } from "../../services/reviewService";
 
-export const NewReview = () => {
+export const NewReview = ({ currentUser }) => {
   const [newReview, setNewReview] = useState({
     rating: 0,
     body: "",
@@ -11,6 +12,7 @@ export const NewReview = () => {
     placeId: 0,
   });
   const { placeId } = useParams();
+  const navigate = useNavigate();
 
   const handleDate = () => {
     const currentDate = new Date();
@@ -29,7 +31,21 @@ export const NewReview = () => {
     setNewReview(reviewCopy);
   };
 
-  const handleSave = () => {};
+  const handleSave = (event) => {
+    event.preventDefault();
+
+    const newPlaceReview = {
+      rating: parseInt(newReview.rating),
+      body: newReview.body,
+      date: handleDate(),
+      userId: currentUser.id,
+      placeId: parseInt(placeId),
+    };
+
+    postReview(newPlaceReview).then(() => {
+      navigate(`/place/${placeId}`);
+    });
+  };
 
   return (
     <form>
@@ -68,7 +84,9 @@ export const NewReview = () => {
         </div>
       </fieldset>
       <div className="form-group">
-        <button className="form-btn btn-secondary">Save Review</button>
+        <button className="form-btn btn-secondary" onClick={handleSave}>
+          Save Review
+        </button>
       </div>
     </form>
   );

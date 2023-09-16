@@ -22,3 +22,13 @@ export const editReview = (review) => {
     body: JSON.stringify(review),
   });
 };
+
+export const postReview = (review) => {
+  return fetch(`http://localhost:8088/reviews`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(review),
+  });
+};
