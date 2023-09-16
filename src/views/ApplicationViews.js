@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { Profile } from "../components/profile/Profile";
 import { EditProfile } from "../components/forms/EditProfile";
 import { EditReview } from "../components/forms/EditReview";
+import { NewReview } from "../components/forms/NewReview";
 
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({});
@@ -30,14 +31,11 @@ export const ApplicationViews = () => {
         }
       >
         <Route index element={<CategoriesList />} />
-        <Route
-          path="category/:categoryId/:categoryName"
-          element={<PlacesList />}
-        />
-        <Route
-          path="details/:placeId"
-          element={<PlaceDetails currentUser={currentUser} />}
-        />
+        <Route path="category/:categoryId" element={<PlacesList />} />
+        <Route path="place/:placeId">
+          <Route index element={<PlaceDetails currentUser={currentUser} />} />
+          <Route path="review" element={<NewReview />} />
+        </Route>
         <Route path="profile/:userId">
           <Route index element={<Profile currentUser={currentUser} />} />
           <Route
@@ -45,8 +43,7 @@ export const ApplicationViews = () => {
             element={<EditProfile currentUser={currentUser} />}
           />
         </Route>
-        <Route path="review/new" element="Add Review Form" />
-        <Route path="review/edit/:reviewId" element={<EditReview />} />
+        <Route path="review/:reviewId" element={<EditReview />} />
         <Route path="place/new" element="Add Place Form" />
       </Route>
     </Routes>

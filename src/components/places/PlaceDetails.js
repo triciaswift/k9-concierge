@@ -6,7 +6,7 @@ import { Reviews } from "../reviews/Reviews";
 
 export const PlaceDetails = ({ currentUser }) => {
   const [place, setPlace] = useState({});
-
+  const [userId, setUserId] = useState(0);
   const { placeId } = useParams(); // this is a string
 
   const navigate = useNavigate();
@@ -20,6 +20,13 @@ export const PlaceDetails = ({ currentUser }) => {
   useEffect(() => {
     getPlace();
   }, []);
+
+  useEffect(() => {
+    const filteredReview = place.reviews?.find(
+      (review) => review.userId === currentUser.id
+    );
+    setUserId(filteredReview?.userId);
+  }, [currentUser, place]);
 
   return (
     <>
@@ -58,14 +65,18 @@ export const PlaceDetails = ({ currentUser }) => {
         <header className="header-container">
           <h2 className="page-header review-header">Reviews</h2>
           <div className="btn-container">
-            <button
-              className="btn btn-primary"
-              onClick={() => {
-                navigate(`/review/new`);
-              }}
-            >
-              Add Review
-            </button>
+            {userId ? (
+              ""
+            ) : (
+              <button
+                className="btn btn-primary"
+                onClick={() => {
+                  navigate(`review`);
+                }}
+              >
+                Add Review
+              </button>
+            )}
           </div>
         </header>
         <div className="reviews">
