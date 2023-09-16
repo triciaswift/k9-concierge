@@ -1,6 +1,7 @@
 header {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .categories-header {
@@ -8,8 +9,8 @@ header {
 }
 
 .logo-img {
-  width: 11rem;
-  height: auto;
+  width: 7rem;
+  height: 7rem;
 }
 
 .categories-container {
@@ -17,7 +18,8 @@ header {
   grid-template-columns: repeat(3, auto);
   grid-template-rows: repeat(2, auto);
   justify-items: center;
-  grid-gap: 2rem 5px;
+  grid-gap: 8rem 5px;
+  margin-top: 3rem;
 }
 
 .category-card {

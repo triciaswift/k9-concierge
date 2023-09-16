@@ -50,7 +50,7 @@ export const Reviews = ({ reviewId, currentUser, getPlace }) => {
           <button
             className="btn btn-secondary"
             onClick={() => {
-              navigate(`/review/edit/${review.id}`);
+              navigate(`/review/${review.id}`);
             }}
           >
             Edit

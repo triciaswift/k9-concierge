@@ -2,17 +2,23 @@ import { useEffect, useState } from "react";
 import "./Places.css";
 import { getPlacesByCategoryId } from "../../services/placeService";
 import { useNavigate, useParams } from "react-router-dom";
+import { getCategoryById } from "../../services/categoryService";
 
 export const PlacesList = () => {
   const [places, setPlaces] = useState([]);
+  const [category, setCategory] = useState([]);
 
-  const { categoryId, categoryName } = useParams(); // this is a string
+  const { categoryId } = useParams(); // this is a string
 
   const navigate = useNavigate();
 
   useEffect(() => {
     getPlacesByCategoryId(categoryId).then((placesArr) => {
       setPlaces(placesArr);
+    });
+
+    getCategoryById(categoryId).then((catObj) => {
+      setCategory(catObj);
     });
   }, [categoryId]);
 
@@ -29,7 +35,7 @@ export const PlacesList = () => {
 
   return (
     <>
-      <h2 className="page-header">{categoryName}</h2>
+      <h2 className="page-header">{category.name}</h2>
       <section className="places-container">
         {places.map((placeObj) => {
           return (
@@ -37,7 +43,7 @@ export const PlacesList = () => {
               className="place-card"
               key={placeObj.id}
               onClick={() => {
-                navigate(`/details/${placeObj.id}`);
+                navigate(`/place/${placeObj.id}`);
               }}
             >
               <div className="place-name">{placeObj.name}</div>
