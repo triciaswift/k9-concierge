@@ -23,18 +23,22 @@ export const EditProfile = ({ currentUser }) => {
   const handleSave = (event) => {
     event.preventDefault();
 
-    const updateUser = {
-      id: user.id,
-      fullName: user.fullName,
-      email: user.email,
-      dogBreed: user.dogBreed,
-      dogName: user.dogName,
-      dogUrl: user.dogUrl,
-    };
+    if (user.fullName) {
+      const updateUser = {
+        id: user.id,
+        fullName: user.fullName,
+        email: user.email,
+        dogBreed: user.dogBreed,
+        dogName: user.dogName,
+        dogUrl: user.dogUrl,
+      };
 
-    editUser(updateUser).then(() => {
-      navigate(`/profile/${user.id}`);
-    });
+      editUser(updateUser).then(() => {
+        navigate(`/profile/${user.id}`);
+      });
+    } else {
+      window.alert(`Please fill out "Name".`);
+    }
   };
 
   return (

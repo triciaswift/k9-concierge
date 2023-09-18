@@ -1,8 +1,8 @@
 .places-container {
   display: grid;
   grid-template-columns: repeat(2, auto);
-  grid-template-rows: repeat(5, auto);
-  grid-gap: 2rem 0;
+  grid-template-rows: repeat(10, auto);
+  grid-gap: 2rem 1rem;
   justify-items: center;
   margin: 0 5rem;
 }
@@ -16,11 +16,11 @@
   width: 30rem;
   margin: 0.5rem 0;
   border-radius: 0.5rem;
-  padding: 1.5rem;
+  padding: 2rem;
 }
 
 .place-name {
-  font-size: 25px;
+  font-size: 30px;
   margin: 0;
   font-weight: bolder;
   letter-spacing: 1px;
@@ -43,13 +43,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   background-color: var(--white);
   border: 1px solid var(--outline);
   border-radius: 0.5rem;
-  padding: 2rem;
-  margin: 2rem auto 5rem auto;
-  width: 40rem;
+  padding: 3rem;
+  margin: 2rem auto 2rem auto;
+  width: 45rem;
 }
 
 .place-info {

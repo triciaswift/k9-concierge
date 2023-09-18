@@ -39,18 +39,22 @@ export const EditReview = () => {
   const handleSave = (event) => {
     event.preventDefault();
 
-    const updateReview = {
-      id: review.id,
-      rating: parseInt(review.rating),
-      body: review.body,
-      date: handleDate(),
-      userId: review.userId,
-      placeId: review.placeId,
-    };
+    if (review.rating && review.body) {
+      const updateReview = {
+        id: review.id,
+        rating: parseInt(review.rating),
+        body: review.body,
+        date: handleDate(),
+        userId: review.userId,
+        placeId: review.placeId,
+      };
 
-    editReview(updateReview).then(() => {
-      navigate(`/place/${review.placeId}`);
-    });
+      editReview(updateReview).then(() => {
+        navigate(`/place/${review.placeId}`);
+      });
+    } else {
+      window.alert(`Please fill out all fields.`);
+    }
   };
 
   return (
