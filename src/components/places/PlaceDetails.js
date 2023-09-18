@@ -17,6 +17,7 @@ export const PlaceDetails = ({ currentUser }) => {
     });
   };
 
+  //! Don't know how to fix dependency array
   useEffect(() => {
     getPlace();
   }, []);
