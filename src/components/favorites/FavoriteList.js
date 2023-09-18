@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import "./Favorites.css";
 import { getFavoritesByUserId } from "../../services/favoritesService";
+import { useNavigate } from "react-router-dom";
 
 export const FavoriteList = ({ currentUser }) => {
   const [favorites, setFavorites] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getFavoritesByUserId(currentUser.id).then((favoritesArr) => {
@@ -20,9 +22,9 @@ export const FavoriteList = ({ currentUser }) => {
             <div
               className="favorite-card"
               key={favObj.id}
-              //   onClick={() => {
-              //     navigate(`/place/${placeObj.id}`);
-              //   }}
+              onClick={() => {
+                navigate(`/place/${favObj.placeId}`);
+              }}
             >
               <div className="favorite-name">{favObj.place?.name}</div>
               <button className="btn btn-secondary">Delete</button>
