@@ -48,7 +48,7 @@ export const Reviews = ({ reviewId, currentUser, getPlace }) => {
       {currentUser.id === review.userId ? (
         <div className="btn-container-two">
           <button
-            className="btn btn-secondary"
+            className="btn btn-primary"
             onClick={() => {
               navigate(`/review/${review.id}`);
             }}

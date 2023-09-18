@@ -70,7 +70,7 @@ export const PlaceDetails = ({ currentUser }) => {
               ""
             ) : (
               <button
-                className="btn btn-primary"
+                className="btn btn-secondary"
                 onClick={() => {
                   navigate(`review`);
                 }}
