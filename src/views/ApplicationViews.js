@@ -9,6 +9,7 @@ import { EditProfile } from "../components/forms/EditProfile";
 import { EditReview } from "../components/forms/EditReview";
 import { NewReview } from "../components/forms/NewReview";
 import { NewPlace } from "../components/forms/NewPlace";
+import { FavoriteList } from "../components/favorites/FavoriteList";
 
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({});
@@ -52,7 +53,10 @@ export const ApplicationViews = () => {
           path="place/new"
           element={<NewPlace currentUser={currentUser} />}
         />
-        <Route path="favorites" element="Hello" />
+        <Route
+          path="favorites"
+          element={<FavoriteList currentUser={currentUser} />}
+        />
       </Route>
     </Routes>
   );

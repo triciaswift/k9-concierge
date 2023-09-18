@@ -1,0 +1,34 @@
+.favorites-container {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: repeat(10, auto);
+  grid-gap: 2rem 1rem;
+  justify-items: center;
+  margin: 0 5rem;
+}
+
+.favorite-card {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--white);
+  border: 1px solid var(--outline);
+  font-size: 1.5em;
+  width: 30rem;
+  margin: 0.5rem 0;
+  border-radius: 0.5rem;
+  padding: 2rem;
+}
+
+.favorite-name {
+  font-size: 30px;
+  margin: 0;
+  font-weight: bolder;
+  letter-spacing: 1px;
+}
+
+.favorite-card:hover {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+  cursor: pointer;
+}
