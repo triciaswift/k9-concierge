@@ -13,15 +13,15 @@ font-family: "Chewy", cursive;
 /* COLOR PALETTE */
 /* Feel free to change these values and create your own color palette! https://coolors.co/ is a great resource */
 :root {
-  --primary: #ffb400;
-  --secondary: #00a6ed;
-  --info: #7fb800;
-  --warning: #f6511d;
+  --primary: #92e0e4;
+  --secondary: #c37d92;
+  --info: #cdc870;
+  --warning: #d5573b;
   --white: #ffffff;
-  --offWhite: #f2f2f3;
-  --dark: #3b3b3b;
-  --outline: #c3c0c0;
-  --appBackground: #dddade;
+  --offWhite: #f6f3f0;
+  --dark: #4c3731;
+  --outline: #ae928a;
+  --appBackground: #acdfe1;
 }
 
 /* GLOBAL STYLES */
@@ -32,6 +32,7 @@ select,
 textarea {
   font-family: "Nunito", sans-serif;
   font-size: 18px;
+  color: var(--dark);
 }
 
 body {

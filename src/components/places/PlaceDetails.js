@@ -17,6 +17,7 @@ export const PlaceDetails = ({ currentUser }) => {
     });
   };
 
+  //! Don't know how to fix dependency array
   useEffect(() => {
     getPlace();
   }, []);
@@ -69,7 +70,7 @@ export const PlaceDetails = ({ currentUser }) => {
               ""
             ) : (
               <button
-                className="btn btn-primary"
+                className="btn btn-secondary"
                 onClick={() => {
                   navigate(`review`);
                 }}

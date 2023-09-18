@@ -60,7 +60,7 @@
 
 .place-description {
   text-align: center;
-  border: 2px dotted var(--outline);
+  border: 2px dotted var(--primary);
   padding: 1.5rem;
   width: 15rem;
 }

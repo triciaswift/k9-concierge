@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./Categories.css";
 import { getAllCategories } from "../../services/categoryService";
-import logoPic from "../../assets/logo.png";
+import sloganPic from "../../assets/slogan.png";
 import { useNavigate } from "react-router-dom";
 
 export const CategoriesList = () => {
@@ -18,9 +18,7 @@ export const CategoriesList = () => {
   return (
     <>
       <header>
-        <img src={logoPic} alt="K9-Concierge-Logo" className="logo-img" />
-        <h1 className="header categories-header">K9 Concierge</h1>
-        <img src={logoPic} alt="K9-Concierge-Logo" className="logo-img" />
+        <img src={sloganPic} alt="K9-Concierge-Slogan" className="logo-img" />
       </header>
       <section className="categories-container">
         {categories.map((category) => {

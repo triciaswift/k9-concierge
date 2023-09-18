@@ -1,7 +1,6 @@
 header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
+  padding-top: 10px;
 }
 
 .categories-header {
@@ -9,8 +8,8 @@ header {
 }
 
 .logo-img {
-  width: 7rem;
-  height: 7rem;
+  width: 30rem;
+  height: auto;
 }
 
 .categories-container {
@@ -25,6 +24,12 @@ header {
 .category-card {
   display: flex;
   flex-direction: column;
+  background-color: var(--offWhite);
+  padding: 2rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--outline);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  width: 200px;
 }
 
 .category-card:hover {
