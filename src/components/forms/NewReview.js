@@ -31,6 +31,7 @@ export const NewReview = ({ currentUser }) => {
     setNewReview(reviewCopy);
   };
 
+  //! Play with the preventDefault() feature to see if necessary or not
   const handleSave = (event) => {
     event.preventDefault();
 
