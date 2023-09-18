@@ -1,17 +1,30 @@
 import { useEffect, useState } from "react";
 import "./Favorites.css";
-import { getFavoritesByUserId } from "../../services/favoritesService";
+import {
+  deleteFavorite,
+  getFavoritesByUserId,
+} from "../../services/favoritesService";
 import { useNavigate } from "react-router-dom";
 
 export const FavoriteList = ({ currentUser }) => {
   const [favorites, setFavorites] = useState([]);
   const navigate = useNavigate();
 
-  useEffect(() => {
+  const getAllFavorites = () => {
     getFavoritesByUserId(currentUser.id).then((favoritesArr) => {
       setFavorites(favoritesArr);
     });
-  }, []);
+  };
+
+  useEffect(() => {
+    getAllFavorites();
+  }, [currentUser]);
+
+  const handleDelete = (favObj) => {
+    deleteFavorite(favObj).then(() => {
+      getAllFavorites();
+    });
+  };
 
   return (
     <>
@@ -19,15 +32,23 @@ export const FavoriteList = ({ currentUser }) => {
       <section className="favorites-container">
         {favorites.map((favObj) => {
           return (
-            <div
-              className="favorite-card"
-              key={favObj.id}
-              onClick={() => {
-                navigate(`/place/${favObj.placeId}`);
-              }}
-            >
-              <div className="favorite-name">{favObj.place?.name}</div>
-              <button className="btn btn-secondary">Delete</button>
+            <div className="favorite-card" key={favObj.id} value={favObj.id}>
+              <div
+                className="favorite-name"
+                onClick={() => {
+                  navigate(`/place/${favObj.placeId}`);
+                }}
+              >
+                {favObj.place?.name}
+              </div>
+              <button
+                className="btn btn-secondary"
+                onClick={() => {
+                  handleDelete(favObj);
+                }}
+              >
+                Delete
+              </button>
             </div>
           );
         })}
