@@ -52,6 +52,7 @@ export const ApplicationViews = () => {
           path="place/new"
           element={<NewPlace currentUser={currentUser} />}
         />
+        <Route path="favorites" element="Hello" />
       </Route>
     </Routes>
   );
