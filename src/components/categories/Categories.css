@@ -5,7 +5,7 @@ header {
 }
 
 .categories-header {
-  margin: 2.5rem 1rem;
+  margin: 1rem 1rem;
 }
 
 .logo-img {
@@ -18,8 +18,8 @@ header {
   grid-template-columns: repeat(3, auto);
   grid-template-rows: repeat(2, auto);
   justify-items: center;
-  grid-gap: 8rem 5px;
-  margin-top: 3rem;
+  grid-gap: 3rem 5px;
+  margin: 2rem 0;
 }
 
 .category-card {

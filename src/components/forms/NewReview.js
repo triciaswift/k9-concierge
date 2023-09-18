@@ -34,17 +34,21 @@ export const NewReview = ({ currentUser }) => {
   const handleSave = (event) => {
     event.preventDefault();
 
-    const newPlaceReview = {
-      rating: parseInt(newReview.rating),
-      body: newReview.body,
-      date: handleDate(),
-      userId: currentUser.id,
-      placeId: parseInt(placeId),
-    };
+    if (newReview.rating && newReview.body) {
+      const newPlaceReview = {
+        rating: parseInt(newReview.rating),
+        body: newReview.body,
+        date: handleDate(),
+        userId: currentUser.id,
+        placeId: parseInt(placeId),
+      };
 
-    postReview(newPlaceReview).then(() => {
-      navigate(`/place/${placeId}`);
-    });
+      postReview(newPlaceReview).then(() => {
+        navigate(`/place/${placeId}`);
+      });
+    } else {
+      window.alert(`Please fill out all fields.`);
+    }
   };
 
   return (

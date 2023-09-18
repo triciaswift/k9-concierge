@@ -11,7 +11,7 @@ export const NewPlace = ({ currentUser }) => {
     address: "",
     phoneNumber: "",
     website: "",
-    offeredServices: [],
+    offeredServices: "",
     categoryId: 0,
     userId: 0,
   });
@@ -32,25 +32,48 @@ export const NewPlace = ({ currentUser }) => {
 
   const handleSave = (event) => {
     event.preventDefault();
-    const string = newPlace.offeredServices.replace(", ", ",");
-    const array = string.split(",");
 
-    const placeItem = {
+    let placeItem = {
       name: newPlace.name,
       address: newPlace.address,
       phoneNumber: newPlace.phoneNumber,
       website: newPlace.website,
-      offeredServices: string.split(","),
+      offeredServices: newPlace.offeredServices,
       categoryId: parseInt(newPlace.categoryId),
       userId: currentUser.id,
     };
 
-    console.log(array);
-    console.log(placeItem);
+    if (
+      newPlace.name &&
+      newPlace.address &&
+      newPlace.phoneNumber &&
+      newPlace.website &&
+      newPlace.offeredServices &&
+      newPlace.categoryId
+    ) {
+      const string = newPlace.offeredServices.replace(", ", ",");
+      const array = string.split(",");
+      placeItem.offeredServices = array;
 
-    postPlace(placeItem).then(() => {
-      navigate(`/category/${newPlace.categoryId}`);
-    });
+      postPlace(placeItem).then(() => {
+        navigate(`/category/${newPlace.categoryId}`);
+      });
+    } else if (
+      newPlace.name &&
+      newPlace.address &&
+      newPlace.phoneNumber &&
+      newPlace.website &&
+      !newPlace.offeredServices &&
+      newPlace.categoryId
+    ) {
+      postPlace(placeItem).then(() => {
+        navigate(`/category/${newPlace.categoryId}`);
+      });
+    } else {
+      window.alert(
+        `Please fill out all fields, "Offered Services" is optional.`
+      );
+    }
   };
 
   return (
