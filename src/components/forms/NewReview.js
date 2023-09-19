@@ -45,7 +45,7 @@ export const NewReview = ({ currentUser }) => {
       };
 
       postReview(newPlaceReview).then(() => {
-        navigate(`/place/${placeId}`);
+        navigate(-1);
       });
     } else {
       window.alert(`Please fill out all fields.`);

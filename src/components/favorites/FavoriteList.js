@@ -20,8 +20,8 @@ export const FavoriteList = ({ currentUser }) => {
     getAllFavorites();
   }, [currentUser]);
 
-  const handleDelete = (favObj) => {
-    deleteFavorite(favObj).then(() => {
+  const handleDelete = (favId) => {
+    deleteFavorite(favId).then(() => {
       getAllFavorites();
     });
   };
@@ -44,7 +44,7 @@ export const FavoriteList = ({ currentUser }) => {
               <button
                 className="btn btn-secondary"
                 onClick={() => {
-                  handleDelete(favObj);
+                  handleDelete(favObj.id);
                 }}
               >
                 Delete

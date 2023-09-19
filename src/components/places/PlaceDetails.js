@@ -3,10 +3,15 @@ import "./Places.css";
 import { getPlaceById } from "../../services/placeService";
 import { useNavigate, useParams } from "react-router-dom";
 import { Reviews } from "../reviews/Reviews";
+import {
+  addFavorite,
+  getFavoriteByUserIdAndPlaceId,
+} from "../../services/favoritesService";
 
 export const PlaceDetails = ({ currentUser }) => {
   const [place, setPlace] = useState({});
   const [userId, setUserId] = useState(0);
+  const [userFavorite, setUserFavorite] = useState({});
   const { placeId } = useParams(); // this is a string
 
   const navigate = useNavigate();
@@ -17,10 +22,15 @@ export const PlaceDetails = ({ currentUser }) => {
     });
   };
 
-  //! Don't know how to fix dependency array
+  //! ignore squiggles, would give an infinite loop
   useEffect(() => {
     getPlace();
-  }, []);
+    getFavoriteByUserIdAndPlaceId(currentUser.id, placeId).then(
+      (favoriteObj) => {
+        setUserFavorite(favoriteObj);
+      }
+    );
+  }, [currentUser, placeId]);
 
   useEffect(() => {
     const filteredReview = place.reviews?.find(
@@ -29,9 +39,29 @@ export const PlaceDetails = ({ currentUser }) => {
     setUserId(filteredReview?.userId);
   }, [currentUser, place]);
 
+  const handleFavorite = () => {
+    const newFavorite = {
+      userId: currentUser.id,
+      placeId: parseInt(placeId),
+    };
+
+    addFavorite(newFavorite).then(() => {
+      navigate(`/favorites`);
+    });
+  };
+
   return (
     <>
-      <h2 className="page-header">{place.name}</h2>
+      <h2 className="page-header">
+        {place.name}
+        {userFavorite ? (
+          ""
+        ) : (
+          <button className="heart-emoji" onClick={handleFavorite}>
+            <i className="fa-solid fa-heart" />
+          </button>
+        )}
+      </h2>
       <section className="place-container">
         <div>
           <div>
