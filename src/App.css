@@ -17,7 +17,7 @@
 }
 
 .btn-primary:hover {
-  background-color: #64e0e7;
+  background-color: #52cfd5;
 }
 
 .btn-secondary {
@@ -40,6 +40,6 @@
   background-color: var(--info);
 }
 
-.btn-info:hover {
+/* .btn-info:hover {
   background-color: #71a500;
-}
+} */

@@ -2,9 +2,16 @@ import { useEffect, useState } from "react";
 import "./Reviews.css";
 import { deleteReview, getReviewById } from "../../services/reviewService";
 import { useNavigate } from "react-router-dom";
+import { CommentList } from "../comments/CommentList";
+import { getCommentsByUserId } from "../../services/commentService";
+import { NewComment } from "../forms/NewComment";
 
 export const Reviews = ({ reviewId, currentUser, getPlace }) => {
   const [review, setReview] = useState({});
+  const [comments, setComments] = useState([]);
+  const [showComments, setShowComments] = useState(false);
+  const [userComment, setUserComment] = useState({});
+  const [showCommentForm, setForm] = useState(false);
 
   const navigate = useNavigate();
 
@@ -18,6 +25,28 @@ export const Reviews = ({ reviewId, currentUser, getPlace }) => {
     deleteReview(reviewId).then(() => {
       getPlace();
     });
+  };
+
+  useEffect(() => {
+    getCommentsByUserId(reviewId).then((commentArr) => {
+      setComments(commentArr);
+    });
+  }, [reviewId]);
+
+  useEffect(() => {
+    const findUserComment = comments.find(
+      (comment) => comment.userId === currentUser.id
+    );
+
+    setUserComment(findUserComment);
+  }, [currentUser, comments]);
+
+  const handleComments = () => {
+    setShowComments(!showComments);
+  };
+
+  const handleNewComment = () => {
+    setForm(!showCommentForm);
   };
 
   return (
@@ -45,6 +74,31 @@ export const Reviews = ({ reviewId, currentUser, getPlace }) => {
         <span className="review-info">Review: </span>
         {review.body}
       </div>
+
+      <div className="comments-container">
+        <div className="comment-number" onClick={handleComments}>
+          {comments.length} comments
+        </div>
+        {currentUser.id === review?.userId ||
+        currentUser.id === userComment?.userId ? (
+          ""
+        ) : (
+          <button className="comment-btn" onClick={handleNewComment}>
+            <i className="fa-solid fa-comment"></i>
+            Comment
+          </button>
+        )}
+      </div>
+      {showComments ? (
+        <div className="comment-container">
+          <CommentList comments={comments} />
+        </div>
+      ) : (
+        ""
+      )}
+
+      {showCommentForm ? <NewComment /> : ""}
+
       {currentUser.id === review.userId ? (
         <div className="btn-container-two">
           <button

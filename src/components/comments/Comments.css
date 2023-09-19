@@ -1,0 +1,15 @@
+.comment-card {
+  border: 2px dotted var(--primary);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1.5rem;
+}
+
+.comment-info {
+  color: var(--secondary);
+  letter-spacing: 0.5px;
+}
+
+.comment-body {
+  margin-top: 10px;
+}

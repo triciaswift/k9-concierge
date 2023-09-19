@@ -1,24 +1,19 @@
 .review-card {
-  background-color: white;
-  border: 1px solid lightslategray;
+  background-color: var(--offWhite);
+  border: 1px solid var(--outline);
   border-radius: 0.5rem;
-  padding: 2.5rem;
-  margin: 1rem;
+  padding: 2rem 2.5rem 1.5rem 2.5rem;
+  margin: 1rem 0 3rem 0;
   width: 35rem;
 }
 
 .review-name:hover {
   color: var(--warning);
-  -webkit-transform: scale(1.1);
-  -ms-transform: scale(1.1);
-  transform: scale(1.1);
   cursor: pointer;
 }
 
 .review-info {
-  font-family: "Roboto", sans-serif;
-  color: var(--info);
-  font-weight: bold;
+  color: var(--secondary);
   letter-spacing: 0.5px;
 }
 
@@ -30,5 +25,46 @@
 .btn-container-two {
   display: flex;
   justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.comments-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.comment-btn {
+  color: var(--primary);
+  background: transparent;
+  padding: 0;
+  font-family: "Quicksand", sans-serif;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.comment-btn:hover {
+  cursor: pointer;
+  background-color: #e6e18f;
+}
+
+.fa-comment {
+  margin-right: 10px;
+}
+
+.comment-number {
+  color: var(--primary);
+  font-family: "Quicksand", sans-serif;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.comment-number:hover {
+  cursor: pointer;
+  background-color: #e6e18f;
+}
+
+.comment-container {
   margin-top: 1rem;
 }

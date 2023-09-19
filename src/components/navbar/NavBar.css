@@ -6,6 +6,8 @@
   background-color: var(--dark);
   margin: 0;
   padding: 5px 1rem;
+  font-family: "Quicksand", sans-serif;
+  letter-spacing: 1px;
 }
 
 .navbar-item {
@@ -16,8 +18,6 @@
 
 .navbar-link {
   text-decoration: none;
-  font-family: "Quicksand", sans-serif;
-  letter-spacing: 1px;
 }
 
 .navbar-logout {
