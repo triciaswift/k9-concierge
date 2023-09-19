@@ -10,16 +10,24 @@ export const NavBar = ({ currentUser }) => {
       <img src={logoPic} alt="K9-Concierge-Logo" className="navbar-img" />
 
       <li className="navbar-item">
-        <Link to="/">Home</Link>
+        <Link className="navbar-link" to="/">
+          Home
+        </Link>
       </li>
       <li className="navbar-item">
-        <Link to={`/profile/${currentUser.id}`}>Profile</Link>
+        <Link className="navbar-link" to={`/profile/${currentUser.id}`}>
+          Profile
+        </Link>
       </li>
       <li className="navbar-item">
-        <Link to="/place/new">New Place</Link>
+        <Link className="navbar-link" to="/place/new">
+          New Place
+        </Link>
       </li>
       <li className="navbar-item">
-        <Link to={`/favorites`}>Favorites</Link>
+        <Link className="navbar-link" to={`/favorites`}>
+          Favorites
+        </Link>
       </li>
       {localStorage.getItem("canine_user") ? (
         <li className="navbar-item navbar-logout">
