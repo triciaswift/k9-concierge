@@ -1,3 +1,22 @@
+.heart-emoji {
+  margin: auto 0 auto 10px;
+  border-radius: 0;
+  color: var(--secondary);
+  cursor: pointer;
+  background: transparent;
+}
+
+.heart-emoji:hover {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.fa-heart {
+  font-size: 50px;
+}
+
 .places-container {
   display: grid;
   grid-template-columns: repeat(2, auto);

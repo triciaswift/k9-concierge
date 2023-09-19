@@ -50,7 +50,7 @@ export const EditReview = () => {
       };
 
       editReview(updateReview).then(() => {
-        navigate(`/place/${review.placeId}`);
+        navigate(-1);
       });
     } else {
       window.alert(`Please fill out all fields.`);

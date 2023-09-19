@@ -34,7 +34,7 @@ export const EditProfile = ({ currentUser }) => {
       };
 
       editUser(updateUser).then(() => {
-        navigate(`/profile/${user.id}`);
+        navigate(-1);
       });
     } else {
       window.alert(`Please fill out "Name".`);
