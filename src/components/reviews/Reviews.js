@@ -9,16 +9,23 @@ import { NewComment } from "../forms/NewComment";
 export const Reviews = ({ reviewId, currentUser, getPlace }) => {
   const [review, setReview] = useState({});
   const [comments, setComments] = useState([]);
-  const [showComments, setShowComments] = useState(false);
   const [userComment, setUserComment] = useState({});
+  const [showComments, setShowComments] = useState(false);
   const [showCommentForm, setForm] = useState(false);
 
   const navigate = useNavigate();
+
+  const renderComments = () => {
+    getCommentsByUserId(reviewId).then((commentArr) => {
+      setComments(commentArr);
+    });
+  };
 
   useEffect(() => {
     getReviewById(reviewId).then((reviewObj) => {
       setReview(reviewObj);
     });
+    renderComments();
   }, [reviewId]);
 
   const handleDelete = () => {
@@ -26,12 +33,6 @@ export const Reviews = ({ reviewId, currentUser, getPlace }) => {
       getPlace();
     });
   };
-
-  useEffect(() => {
-    getCommentsByUserId(reviewId).then((commentArr) => {
-      setComments(commentArr);
-    });
-  }, [reviewId]);
 
   useEffect(() => {
     const findUserComment = comments.find(
@@ -51,29 +52,31 @@ export const Reviews = ({ reviewId, currentUser, getPlace }) => {
 
   return (
     <div className="review-card">
-      <div className="review-group">
-        <div
-          className="review-name"
-          onClick={() => {
-            navigate(`/profile/${review.userId}`);
-          }}
-        >
-          <span className="review-info">Name: </span>
-          {review.user?.fullName}
+      <>
+        <div className="review-group">
+          <div
+            className="review-name"
+            onClick={() => {
+              navigate(`/profile/${review.userId}`);
+            }}
+          >
+            <span className="review-info">Name: </span>
+            {review.user?.fullName}
+          </div>
+          <div>
+            <span className="review-info">Date: </span>
+            {review.date}
+          </div>
         </div>
         <div>
-          <span className="review-info">Date: </span>
-          {review.date}
+          <span className="review-info">Rating: </span>
+          {review.rating} Stars
         </div>
-      </div>
-      <div>
-        <span className="review-info">Rating: </span>
-        {review.rating} Stars
-      </div>
-      <div>
-        <span className="review-info">Review: </span>
-        {review.body}
-      </div>
+        <div>
+          <span className="review-info">Review: </span>
+          {review.body}
+        </div>
+      </>
 
       <div className="comments-container">
         <div className="comment-number" onClick={handleComments}>
@@ -89,15 +92,25 @@ export const Reviews = ({ reviewId, currentUser, getPlace }) => {
           </button>
         )}
       </div>
+
       {showComments ? (
         <div className="comment-container">
-          <CommentList comments={comments} />
+          <CommentList comments={comments} currentUser={currentUser} />
         </div>
       ) : (
         ""
       )}
 
-      {showCommentForm ? <NewComment /> : ""}
+      {showCommentForm ? (
+        <NewComment
+          reviewId={reviewId}
+          currentUser={currentUser}
+          handleNewComment={handleNewComment}
+          renderComments={renderComments}
+        />
+      ) : (
+        ""
+      )}
 
       {currentUser.id === review.userId ? (
         <div className="btn-container-two">

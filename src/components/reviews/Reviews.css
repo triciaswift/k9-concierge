@@ -4,7 +4,8 @@
   border-radius: 0.5rem;
   padding: 2rem 2.5rem 1.5rem 2.5rem;
   margin: 1rem 0 3rem 0;
-  width: 35rem;
+  flex-basis: 40%;
+  height: min-content;
 }
 
 .review-name:hover {

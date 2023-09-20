@@ -2,6 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import "./Form.css";
 import { useState } from "react";
 import { postReview } from "../../services/reviewService";
+import { getDate } from "../../services/dateService";
 
 export const NewReview = ({ currentUser }) => {
   const [newReview, setNewReview] = useState({
@@ -13,15 +14,6 @@ export const NewReview = ({ currentUser }) => {
   });
   const { placeId } = useParams();
   const navigate = useNavigate();
-
-  const handleDate = () => {
-    const currentDate = new Date();
-    const year = currentDate.getFullYear();
-    const month = String(currentDate.getMonth() + 1).padStart(2, "0");
-    const day = String(currentDate.getDate()).padStart(2, "0");
-    const formattedDate = `${year}-${month}-${day}`;
-    return formattedDate;
-  };
 
   const ratingNumbers = [1, 2, 3, 4, 5];
 
@@ -39,7 +31,7 @@ export const NewReview = ({ currentUser }) => {
       const newPlaceReview = {
         rating: parseInt(newReview.rating),
         body: newReview.body,
-        date: handleDate(),
+        date: getDate(),
         userId: currentUser.id,
         placeId: parseInt(placeId),
       };

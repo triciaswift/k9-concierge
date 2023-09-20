@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import "./Comments.css";
 
-export const CommentList = ({ comments }) => {
-  const navigate = useNavigate;
+export const CommentList = ({ currentUser, comments }) => {
+  const navigate = useNavigate();
 
   return (
     <>
@@ -13,8 +13,7 @@ export const CommentList = ({ comments }) => {
               <div
                 className="review-name"
                 onClick={() => {
-                  //! Ask Derek about in the morning!
-                  navigate(`/profile/${comment.userId}}`);
+                  navigate(`/profile/${comment.userId}`);
                 }}
               >
                 <span className="review-info">Name: </span>
@@ -26,6 +25,18 @@ export const CommentList = ({ comments }) => {
               </div>
             </div>
             <div className="comment-body">{comment.comment}</div>
+            {currentUser.id === comment.userId ? (
+              <div className="button-container">
+                <button className="btn-primary btn-comment">
+                  Edit Comment
+                </button>
+                <button className="btn-warning btn-comment">
+                  Delete Comment
+                </button>
+              </div>
+            ) : (
+              ""
+            )}
           </div>
         );
       })}
