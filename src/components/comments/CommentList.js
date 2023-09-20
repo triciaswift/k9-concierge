@@ -1,8 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import "./Comments.css";
+import { deleteComment } from "../../services/commentService";
 
-export const CommentList = ({ currentUser, comments }) => {
+export const CommentList = ({ currentUser, comments, renderComments }) => {
   const navigate = useNavigate();
+
+  const handleDelete = (commentId) => {
+    deleteComment(commentId).then(() => {
+      renderComments();
+    });
+  };
 
   return (
     <>
@@ -30,7 +37,12 @@ export const CommentList = ({ currentUser, comments }) => {
                 <button className="btn-primary btn-comment">
                   Edit Comment
                 </button>
-                <button className="btn-warning btn-comment">
+                <button
+                  className="btn-warning btn-comment"
+                  onClick={() => {
+                    handleDelete(comment.id);
+                  }}
+                >
                   Delete Comment
                 </button>
               </div>
