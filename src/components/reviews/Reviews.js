@@ -95,7 +95,11 @@ export const Reviews = ({ reviewId, currentUser, getPlace }) => {
 
       {showComments ? (
         <div className="comment-container">
-          <CommentList comments={comments} currentUser={currentUser} />
+          <CommentList
+            comments={comments}
+            currentUser={currentUser}
+            renderComments={renderComments}
+          />
         </div>
       ) : (
         ""
