@@ -98,8 +98,7 @@
 }
 
 .reviews {
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-  grid-template-rows: repeat(10, auto);
-  justify-items: center;
+  display: flex;
+  justify-content: space-around;
+  /* flex-direction: column; */
 }

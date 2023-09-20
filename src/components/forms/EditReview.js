@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./Form.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { editReview, getReviewById } from "../../services/reviewService";
+import { getDate } from "../../services/dateService";
 
 export const EditReview = () => {
   const [review, setReview] = useState({});
@@ -22,20 +23,6 @@ export const EditReview = () => {
     setReview(reviewCopy);
   };
 
-  const handleDate = () => {
-    const currentDate = new Date();
-
-    // Extract year, month, and day components
-    const year = currentDate.getFullYear();
-    const month = String(currentDate.getMonth() + 1).padStart(2, "0"); // Month is 0-based, so add 1
-    const day = String(currentDate.getDate()).padStart(2, "0");
-
-    // Create the formatted date string
-    const formattedDate = `${year}-${month}-${day}`;
-
-    return formattedDate;
-  };
-
   const handleSave = (event) => {
     event.preventDefault();
 
@@ -44,7 +31,7 @@ export const EditReview = () => {
         id: review.id,
         rating: parseInt(review.rating),
         body: review.body,
-        date: handleDate(),
+        date: getDate(),
         userId: review.userId,
         placeId: review.placeId,
       };
