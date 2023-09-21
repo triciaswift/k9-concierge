@@ -42,7 +42,7 @@ export const FavoriteList = ({ currentUser }) => {
                 {favObj.place?.name}
               </div>
               <button
-                className="btn btn-secondary"
+                className="btn btn-secondary btn-favorite"
                 onClick={() => {
                   handleDelete(favObj.id);
                 }}

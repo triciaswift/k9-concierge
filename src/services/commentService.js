@@ -19,3 +19,13 @@ export const deleteComment = (commentId) => {
     method: "DELETE",
   });
 };
+
+export const editComment = (commentObj) => {
+  return fetch(`http://localhost:8088/comments/${commentObj.id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(commentObj),
+  });
+};

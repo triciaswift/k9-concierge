@@ -53,6 +53,14 @@ export const PlaceDetails = ({ currentUser }) => {
   return (
     <>
       <h2 className="page-header">
+        <button
+          className="arrow-emoji"
+          onClick={() => {
+            navigate(`/category/${place.categoryId}`);
+          }}
+        >
+          <i className="fa-solid fa-circle-arrow-left"></i>
+        </button>
         {place.name}
         {userFavorite ? (
           ""

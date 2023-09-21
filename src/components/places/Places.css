@@ -23,7 +23,7 @@
   grid-template-rows: repeat(10, auto);
   grid-gap: 2rem 1rem;
   justify-items: center;
-  margin: 0 5rem;
+  margin: 0 30rem;
 }
 
 .place-card {
@@ -32,10 +32,10 @@
   background-color: var(--white);
   border: 1px solid var(--outline);
   font-size: 1.5em;
-  width: 30rem;
+  width: 70%;
   margin: 0.5rem 0;
   border-radius: 0.5rem;
-  padding: 2rem;
+  padding: 3rem;
 }
 
 .place-name {
@@ -67,7 +67,7 @@
   border-radius: 0.5rem;
   padding: 3rem;
   margin: 2rem auto 2rem auto;
-  width: 45rem;
+  width: 35%;
 }
 
 .place-info {
@@ -81,11 +81,11 @@
   text-align: center;
   border: 2px dotted #92e0e4;
   padding: 1.5rem;
-  width: 15rem;
+  width: 20rem;
 }
 
 .review-header {
-  margin: 0 0 0 2rem;
+  margin: 0 0 0 10rem;
 }
 
 .header-container {
@@ -98,7 +98,9 @@
 }
 
 .reviews {
-  display: flex;
-  justify-content: space-around;
-  /* flex-direction: column; */
+  display: grid;
+  grid-template-columns: repeat(2, 38%);
+  grid-template-rows: repeat(2, auto);
+  justify-content: center;
+  grid-gap: 3rem 10rem;
 }

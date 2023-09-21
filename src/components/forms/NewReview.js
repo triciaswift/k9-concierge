@@ -80,7 +80,15 @@ export const NewReview = ({ currentUser }) => {
           ></textarea>
         </div>
       </fieldset>
-      <div className="form-group">
+      <div className="form-btn-container">
+        <button
+          className="arrow-emoji"
+          onClick={() => {
+            navigate(`/place/${placeId}`);
+          }}
+        >
+          <i className="fa-solid fa-circle-arrow-left"></i>
+        </button>
         <button className="form-btn btn-secondary" onClick={handleSave}>
           Save Review
         </button>

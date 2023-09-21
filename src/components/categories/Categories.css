@@ -1,6 +1,6 @@
 header {
   text-align: center;
-  padding-top: 10px;
+  padding-top: 3rem;
 }
 
 .categories-header {
@@ -13,12 +13,15 @@ header {
 }
 
 .categories-container {
-  display: grid;
-  grid-template-columns: repeat(3, auto);
-  grid-template-rows: repeat(2, auto);
-  justify-items: center;
-  grid-gap: 3rem 5px;
-  margin: 2rem 0;
+  width: 65%;
+  margin: 7rem auto 0 auto;
+}
+
+.category-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 0 5rem;
 }
 
 .category-card {
@@ -29,7 +32,9 @@ header {
   border-radius: 0.5rem;
   border: 1px solid var(--outline);
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-  width: 200px;
+  flex-basis: 20%;
+  margin: 0 1rem 6rem 1rem;
+  /* width: 200px; */
 }
 
 .category-card:hover {

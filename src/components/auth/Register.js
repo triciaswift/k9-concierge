@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 import { createUser, getUserByEmail } from "../../services/userService";
 
@@ -76,9 +76,14 @@ export const Register = (props) => {
         </fieldset>
         <fieldset className="auth-fieldset">
           <div>
-            <button type="submit">Register</button>
+            <button type="submit" className="btn btn-secondary">
+              Register
+            </button>
           </div>
         </fieldset>
+        <section className="register-link">
+          <Link to="/login">Back to Login</Link>
+        </section>
       </form>
     </main>
   );
