@@ -24,15 +24,18 @@ export const CategoriesList = () => {
         <div className="category-items">
           {categories.map((category) => {
             return (
-              <div className="category-card" key={category.id}>
+              <div
+                className="category-card"
+                key={category.id}
+                onClick={() => {
+                  navigate(`/category/${category.id}`);
+                }}
+              >
                 <h2 className="category-name">{category.name}</h2>
                 <img
                   src={category.imageUrl}
                   alt={category.name}
                   className="category-img"
-                  onClick={() => {
-                    navigate(`/category/${category.id}`);
-                  }}
                 />
               </div>
             );

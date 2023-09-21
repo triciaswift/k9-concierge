@@ -35,7 +35,19 @@ export const PlacesList = () => {
 
   return (
     <>
-      <h2 className="page-header">{category.name}</h2>
+      <div className="category-header-container">
+        <img
+          src={category.imageUrl}
+          alt={category.name}
+          className="category-img-two"
+        />
+        <h2 className="page-header">{category.name}</h2>
+        <img
+          src={category.imageUrl}
+          alt={category.name}
+          className="category-img-two"
+        />
+      </div>
       <section className="places-container">
         {places.map((placeObj) => {
           return (

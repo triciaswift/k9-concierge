@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 import { createUser, getUserByEmail } from "../../services/userService";
+import sloganPic from "../../assets/slogan.png";
 
 export const Register = (props) => {
   const [user, setUser] = useState({
@@ -47,7 +48,11 @@ export const Register = (props) => {
   return (
     <main className="auth-container">
       <form className="auth-form" onSubmit={handleRegister}>
-        <h1 className="header login-header">K9 Concierge</h1>
+        <img
+          src={sloganPic}
+          alt="K9-Concierge-Slogan"
+          className="login-header"
+        />
         <h2>Please Register</h2>
         <fieldset className="auth-fieldset">
           <div>

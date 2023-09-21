@@ -54,7 +54,7 @@ export const PlaceDetails = ({ currentUser }) => {
     <>
       <h2 className="page-header">
         <button
-          className="arrow-emoji"
+          className="arrow-emoji arrow-btn"
           onClick={() => {
             navigate(`/category/${place.categoryId}`);
           }}
