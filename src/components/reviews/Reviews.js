@@ -50,6 +50,15 @@ export const Reviews = ({ reviewId, currentUser, getPlace }) => {
     setForm(!showCommentForm);
   };
 
+  const handleNumberOfComments = () => {
+    const numOfComments = comments.length;
+    if (numOfComments > 1 || numOfComments === 0) {
+      return numOfComments + " Comments";
+    } else {
+      return numOfComments + " Comment";
+    }
+  };
+
   return (
     <div className="review-card">
       <>
@@ -80,7 +89,7 @@ export const Reviews = ({ reviewId, currentUser, getPlace }) => {
 
       <div className="comments-container">
         <div className="comment-number" onClick={handleComments}>
-          {comments.length} comments
+          {handleNumberOfComments()}
         </div>
         {currentUser.id === review?.userId ||
         currentUser.id === userComment?.userId ? (

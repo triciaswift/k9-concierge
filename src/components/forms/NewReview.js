@@ -46,7 +46,7 @@ export const NewReview = ({ currentUser }) => {
 
   return (
     <form>
-      <h2 className="page-header">Edit Review</h2>
+      <h2 className="page-header">Add Review</h2>
       <fieldset>
         <div className="radio-group">
           <div>Rating:</div>

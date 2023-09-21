@@ -1,20 +1,13 @@
-.heart-emoji {
-  margin: auto 0 auto 10px;
-  border-radius: 0;
-  color: var(--secondary);
-  cursor: pointer;
-  background: transparent;
+.category-header-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.heart-emoji:hover {
-  -webkit-transform: scale(1.1);
-  -ms-transform: scale(1.1);
-  transform: scale(1.1);
-  cursor: pointer;
-}
-
-.fa-heart {
-  font-size: 50px;
+.category-img-two {
+  margin: 0 35px;
+  width: auto;
+  height: 100px;
 }
 
 .places-container {
@@ -56,6 +49,29 @@
   display: block;
   margin-top: auto;
   margin-bottom: auto;
+}
+
+.arrow-btn {
+  margin: auto 10px auto 0;
+}
+
+.heart-emoji {
+  margin: auto 0 auto 10px;
+  border-radius: 0;
+  color: var(--secondary);
+  cursor: pointer;
+  background: transparent;
+}
+
+.heart-emoji:hover {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.fa-heart {
+  font-size: 50px;
 }
 
 .place-container {
@@ -103,4 +119,5 @@
   grid-template-rows: repeat(2, auto);
   justify-content: center;
   grid-gap: 3rem 10rem;
+  margin: 1rem 0 10rem 0;
 }
