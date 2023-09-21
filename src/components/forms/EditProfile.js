@@ -92,8 +92,16 @@ export const EditProfile = ({ currentUser }) => {
           />
         </div>
       </fieldset>
-      <div className="form-group">
-        <button className="form-btn btn-secondary" onClick={handleSave}>
+      <div className="form-btn-container">
+        <button
+          className="arrow-emoji"
+          onClick={() => {
+            navigate(`/profile/${currentUser.id}`);
+          }}
+        >
+          <i className="fa-solid fa-circle-arrow-left"></i>
+        </button>
+        <button className="btn-secondary" onClick={handleSave}>
           Save Profile
         </button>
       </div>

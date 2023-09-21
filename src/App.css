@@ -4,9 +4,9 @@
 
 .page-header {
   font-family: "Euphoria Script", cursive;
-  font-size: 5rem;
+  font-size: 6rem;
   text-align: center;
-  margin: 1rem 0;
+  margin: 3rem 0;
   letter-spacing: 2px;
 }
 
@@ -36,10 +36,10 @@
   background-color: #e14617;
 }
 
-.btn-info {
+/* .btn-info {
   background-color: var(--info);
 }
 
-/* .btn-info:hover {
-  background-color: #71a500;
+.btn-info:hover {
+  background-color: #e8e160;
 } */

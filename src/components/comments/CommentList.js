@@ -1,14 +1,26 @@
 import { useNavigate } from "react-router-dom";
 import "./Comments.css";
 import { deleteComment } from "../../services/commentService";
+import { EditComment } from "../forms/EditComment";
+import { useState } from "react";
 
 export const CommentList = ({ currentUser, comments, renderComments }) => {
+  const [showEditComment, setShowEditComment] = useState(false);
+  const [userComment, setUserComment] = useState({});
   const navigate = useNavigate();
 
   const handleDelete = (commentId) => {
     deleteComment(commentId).then(() => {
       renderComments();
     });
+  };
+
+  const handleEditCommentView = () => {
+    setShowEditComment(!showEditComment);
+  };
+
+  const handleUserComment = (commentObj) => {
+    setUserComment(commentObj);
   };
 
   return (
@@ -34,13 +46,20 @@ export const CommentList = ({ currentUser, comments, renderComments }) => {
             <div className="comment-body">{comment.comment}</div>
             {currentUser.id === comment.userId ? (
               <div className="button-container">
-                <button className="btn-primary btn-comment">
+                <button
+                  className="btn-primary btn-comment"
+                  onClick={() => {
+                    handleEditCommentView();
+                    handleUserComment(comment);
+                  }}
+                >
                   Edit Comment
                 </button>
                 <button
                   className="btn-warning btn-comment"
                   onClick={() => {
                     handleDelete(comment.id);
+                    setShowEditComment(false);
                   }}
                 >
                   Delete Comment
@@ -52,6 +71,15 @@ export const CommentList = ({ currentUser, comments, renderComments }) => {
           </div>
         );
       })}
+      {showEditComment ? (
+        <EditComment
+          userComment={userComment}
+          renderComments={renderComments}
+          handleEditCommentView={handleEditCommentView}
+        />
+      ) : (
+        ""
+      )}
     </>
   );
 };

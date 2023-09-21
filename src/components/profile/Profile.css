@@ -1,6 +1,7 @@
 .user-container {
   text-align: center;
-  margin: 2.5rem 15rem;
+  width: 30%;
+  margin: 2.5rem auto 0 auto;
   border: 1px solid var(--outline);
   border-radius: 10px;
   padding: 2rem 3rem 4rem 3rem;

@@ -20,15 +20,16 @@ export const NavBar = ({ currentUser }) => {
         </Link>
       </li>
       <li className="navbar-item">
-        <Link className="navbar-link" to="/place/new">
-          New Place
-        </Link>
-      </li>
-      <li className="navbar-item">
         <Link className="navbar-link" to={`/favorites`}>
           Favorites
         </Link>
       </li>
+      <li className="navbar-item">
+        <Link className="navbar-link" to="/place/new">
+          New Place
+        </Link>
+      </li>
+
       {localStorage.getItem("canine_user") ? (
         <li className="navbar-item navbar-logout">
           <Link

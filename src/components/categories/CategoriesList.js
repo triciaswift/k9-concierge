@@ -21,21 +21,23 @@ export const CategoriesList = () => {
         <img src={sloganPic} alt="K9-Concierge-Slogan" className="logo-img" />
       </header>
       <section className="categories-container">
-        {categories.map((category) => {
-          return (
-            <div className="category-card" key={category.id}>
-              <h2 className="category-name">{category.name}</h2>
-              <img
-                src={category.imageUrl}
-                alt={category.name}
-                className="category-img"
-                onClick={() => {
-                  navigate(`/category/${category.id}`);
-                }}
-              />
-            </div>
-          );
-        })}
+        <div className="category-items">
+          {categories.map((category) => {
+            return (
+              <div className="category-card" key={category.id}>
+                <h2 className="category-name">{category.name}</h2>
+                <img
+                  src={category.imageUrl}
+                  alt={category.name}
+                  className="category-img"
+                  onClick={() => {
+                    navigate(`/category/${category.id}`);
+                  }}
+                />
+              </div>
+            );
+          })}
+        </div>
       </section>
     </>
   );

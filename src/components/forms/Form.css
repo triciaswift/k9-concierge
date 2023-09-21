@@ -1,5 +1,6 @@
 form {
-  margin: 3rem 5rem;
+  width: 45%;
+  margin: 2rem auto 0 auto;
   border: 1px solid var(--outline);
   border-radius: 10px;
   padding: 1rem 2rem;
@@ -76,9 +77,10 @@ select {
 }
 
 .form-container {
-  margin: 1.5rem;
+  /* margin: 1.5rem; */
   border: none;
   box-shadow: none;
+  width: auto;
 }
 
 .form-review {
@@ -90,4 +92,30 @@ select {
   align-self: flex-end;
   font-size: medium;
   padding: 8px 10px;
+}
+
+.form-btn-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 2rem;
+}
+
+.arrow-emoji {
+  margin: auto 0 auto 10px;
+  border-radius: 0;
+  color: var(--primary);
+  cursor: pointer;
+  background: transparent;
+}
+
+.arrow-emoji:hover {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.fa-circle-arrow-left {
+  font-size: 45px;
 }
