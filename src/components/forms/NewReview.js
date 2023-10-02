@@ -27,25 +27,21 @@ export const NewReview = ({ currentUser }) => {
   const handleSave = (event) => {
     event.preventDefault();
 
-    if (newReview.rating && newReview.body) {
-      const newPlaceReview = {
-        rating: parseInt(newReview.rating),
-        body: newReview.body,
-        date: getDate(),
-        userId: currentUser.id,
-        placeId: parseInt(placeId),
-      };
+    const newPlaceReview = {
+      rating: parseInt(newReview.rating),
+      body: newReview.body,
+      date: getDate(),
+      userId: currentUser.id,
+      placeId: parseInt(placeId),
+    };
 
-      postReview(newPlaceReview).then(() => {
-        navigate(-1);
-      });
-    } else {
-      window.alert(`Please fill out all fields.`);
-    }
+    postReview(newPlaceReview).then(() => {
+      navigate(-1);
+    });
   };
 
   return (
-    <form>
+    <form onSubmit={handleSave}>
       <h2 className="page-header">Add Review</h2>
       <fieldset>
         <div className="radio-group">
@@ -59,6 +55,7 @@ export const NewReview = ({ currentUser }) => {
                     name="rating"
                     value={number}
                     onChange={handleInputChange}
+                    required
                   />
                   {number}
                 </label>
@@ -77,6 +74,7 @@ export const NewReview = ({ currentUser }) => {
             value={newReview.body}
             className="form-body"
             onChange={handleInputChange}
+            required
           ></textarea>
         </div>
       </fieldset>
@@ -89,7 +87,7 @@ export const NewReview = ({ currentUser }) => {
         >
           <i className="fa-solid fa-circle-arrow-left"></i>
         </button>
-        <button className="form-btn btn-secondary" onClick={handleSave}>
+        <button className="form-btn btn-secondary" type="submit">
           Save Review
         </button>
       </div>

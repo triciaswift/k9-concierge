@@ -26,26 +26,22 @@ export const EditReview = () => {
   const handleSave = (event) => {
     event.preventDefault();
 
-    if (review.rating && review.body) {
-      const updateReview = {
-        id: review.id,
-        rating: parseInt(review.rating),
-        body: review.body,
-        date: getDate(),
-        userId: review.userId,
-        placeId: review.placeId,
-      };
+    const updateReview = {
+      id: review.id,
+      rating: parseInt(review.rating),
+      body: review.body,
+      date: getDate(),
+      userId: review.userId,
+      placeId: review.placeId,
+    };
 
-      editReview(updateReview).then(() => {
-        navigate(-1);
-      });
-    } else {
-      window.alert(`Please fill out all fields.`);
-    }
+    editReview(updateReview).then(() => {
+      navigate(-1);
+    });
   };
 
   return (
-    <form>
+    <form onSubmit={handleSave}>
       <h2 className="page-header">Edit Review</h2>
       <fieldset>
         <div className="radio-group">
@@ -60,6 +56,7 @@ export const EditReview = () => {
                     value={number}
                     checked={number === parseInt(review.rating)}
                     onChange={handleInputChange}
+                    required
                   />
                   {number}
                 </label>
@@ -78,6 +75,7 @@ export const EditReview = () => {
             value={review.body}
             className="form-body"
             onChange={handleInputChange}
+            required
           ></textarea>
         </div>
       </fieldset>
@@ -90,7 +88,7 @@ export const EditReview = () => {
         >
           <i className="fa-solid fa-circle-arrow-left"></i>
         </button>
-        <button className="form-btn btn-secondary" onClick={handleSave}>
+        <button className="form-btn btn-secondary" type="submit">
           Save Review
         </button>
       </div>

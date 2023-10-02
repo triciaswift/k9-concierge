@@ -43,41 +43,17 @@ export const NewPlace = ({ currentUser }) => {
       userId: currentUser.id,
     };
 
-    if (
-      newPlace.name &&
-      newPlace.address &&
-      newPlace.phoneNumber &&
-      newPlace.website &&
-      newPlace.offeredServices &&
-      newPlace.categoryId
-    ) {
-      const string = newPlace.offeredServices.replace(", ", ",");
-      const array = string.split(",");
-      placeItem.offeredServices = array;
+    const string = newPlace.offeredServices.replace(", ", ",");
+    const array = string.split(",");
+    placeItem.offeredServices = array;
 
-      postPlace(placeItem).then(() => {
-        navigate(`/category/${newPlace.categoryId}`);
-      });
-    } else if (
-      newPlace.name &&
-      newPlace.address &&
-      newPlace.phoneNumber &&
-      newPlace.website &&
-      !newPlace.offeredServices &&
-      newPlace.categoryId
-    ) {
-      postPlace(placeItem).then(() => {
-        navigate(`/category/${newPlace.categoryId}`);
-      });
-    } else {
-      window.alert(
-        `Please fill out all fields, "Offered Services" is optional.`
-      );
-    }
+    postPlace(placeItem).then(() => {
+      navigate(`/category/${newPlace.categoryId}`);
+    });
   };
 
   return (
-    <form>
+    <form onSubmit={handleSave}>
       <h2 className="page-header">New Place</h2>
       <fieldset className="place-group">
         <div className="form-group group">
@@ -112,7 +88,7 @@ export const NewPlace = ({ currentUser }) => {
             required
             onChange={handleInputChange}
           >
-            <option value={0}>Please select a category</option>
+            <option value={""}>Please select a category</option>
             {allCategories.map((category) => {
               return (
                 <option key={category.id} value={category.id}>
@@ -164,8 +140,8 @@ export const NewPlace = ({ currentUser }) => {
         </div>
       </fieldset>
       <div className="form-group">
-        <button className="form-btn btn-secondary" onClick={handleSave}>
-          Save Review
+        <button className="form-btn btn-secondary" type="submit">
+          Save New Place
         </button>
       </div>
     </form>
