@@ -33,7 +33,7 @@ export const NewComment = ({
     });
   };
   return (
-    <form className="form-container">
+    <form className="form-container" onSubmit={handleSave}>
       <div className="form-group form-review">
         <label>Leave Comment:</label>
         <textarea
@@ -43,10 +43,11 @@ export const NewComment = ({
           value={newComment.comment}
           className="form-body"
           onChange={handleInputChange}
+          required
         ></textarea>
       </div>
       <div className="form-group form-review">
-        <button className="btn-primary btn-comment" onClick={handleSave}>
+        <button className="btn-primary btn-comment" type="submit">
           Save Comment
         </button>
       </div>

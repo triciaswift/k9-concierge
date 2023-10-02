@@ -23,26 +23,22 @@ export const EditProfile = ({ currentUser }) => {
   const handleSave = (event) => {
     event.preventDefault();
 
-    if (user.fullName) {
-      const updateUser = {
-        id: user.id,
-        fullName: user.fullName,
-        email: user.email,
-        dogBreed: user.dogBreed,
-        dogName: user.dogName,
-        dogUrl: user.dogUrl,
-      };
+    const updateUser = {
+      id: user.id,
+      fullName: user.fullName,
+      email: user.email,
+      dogBreed: user.dogBreed,
+      dogName: user.dogName,
+      dogUrl: user.dogUrl,
+    };
 
-      editUser(updateUser).then(() => {
-        navigate(-1);
-      });
-    } else {
-      window.alert(`Please fill out "Name".`);
-    }
+    editUser(updateUser).then(() => {
+      navigate(-1);
+    });
   };
 
   return (
-    <form>
+    <form onSubmit={handleSave}>
       <h2 className="page-header">Edit Profile</h2>
       <fieldset>
         <div className="form-group">
@@ -53,6 +49,7 @@ export const EditProfile = ({ currentUser }) => {
             value={user.fullName ? user.fullName : ""}
             className="form-control"
             onChange={handleInputChange}
+            required
           />
         </div>
       </fieldset>
@@ -101,7 +98,7 @@ export const EditProfile = ({ currentUser }) => {
         >
           <i className="fa-solid fa-circle-arrow-left"></i>
         </button>
-        <button className="btn-secondary" onClick={handleSave}>
+        <button className="btn-secondary" type="submit">
           Save Profile
         </button>
       </div>
