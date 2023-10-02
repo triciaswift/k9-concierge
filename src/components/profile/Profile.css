@@ -1,10 +1,10 @@
 .user-container {
   text-align: center;
-  width: 30%;
+  width: max-content;
   margin: 2.5rem auto 0 auto;
   border: 1px solid var(--outline);
   border-radius: 10px;
-  padding: 2rem 3rem 4rem 3rem;
+  padding: 2rem 4rem 4rem 4rem;
   box-shadow: 1px 2px 5px lightgray;
   background-color: var(--offWhite);
 }

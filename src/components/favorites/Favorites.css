@@ -2,14 +2,16 @@
   display: grid;
   grid-template-columns: repeat(2, auto);
   grid-template-rows: repeat(10, auto);
-  grid-gap: 2rem 1rem;
+  grid-gap: 2rem 0;
   justify-items: center;
-  margin: 0 30rem;
+  align-items: center;
+  margin: 55px 10rem;
 }
 
 .favorite-card {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background-color: var(--white);
   border: 1px solid var(--outline);
   font-size: 1.5em;

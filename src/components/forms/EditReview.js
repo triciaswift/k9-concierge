@@ -3,19 +3,28 @@ import "./Form.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { editReview, getReviewById } from "../../services/reviewService";
 import { getDate } from "../../services/dateService";
+import { FaStar } from "react-icons/fa";
 
 export const EditReview = () => {
   const [review, setReview] = useState({});
+  const [rating, setRating] = useState(null);
+  const [hover, setHover] = useState(null);
+
   const { reviewId } = useParams();
   const navigate = useNavigate();
 
-  const ratingNumbers = [1, 2, 3, 4, 5];
+  // const ratingNumbers = [1, 2, 3, 4, 5];
 
   useEffect(() => {
     getReviewById(reviewId).then((reviewObj) => {
       setReview(reviewObj);
     });
   }, [reviewId]);
+
+  // Highlights the stars to match the rating from the current review
+  useEffect(() => {
+    setRating(review.rating);
+  }, [review]);
 
   const handleInputChange = (event) => {
     const reviewCopy = { ...review };
@@ -46,6 +55,34 @@ export const EditReview = () => {
       <fieldset>
         <div className="radio-group">
           <div>Rating:</div>
+          {[...Array(5)].map((star, index) => {
+            const currentRating = index + 1;
+            return (
+              <label key={index}>
+                <input
+                  type="radio"
+                  name="rating"
+                  value={currentRating}
+                  onClick={() => {
+                    setRating(currentRating);
+                  }}
+                  onChange={handleInputChange}
+                />
+                <FaStar
+                  className="star"
+                  size={35}
+                  color={
+                    currentRating <= (hover || rating) ? "#ffc107" : "#e4e5e9"
+                  }
+                  onMouseEnter={() => setHover(currentRating)}
+                  onMouseLeave={() => setHover(null)}
+                />
+              </label>
+            );
+          })}
+        </div>
+        {/* <div className="radio-group">
+          <div>Rating:</div>
           {ratingNumbers.map((number, index) => {
             return (
               <div className="radio" key={index}>
@@ -63,7 +100,7 @@ export const EditReview = () => {
               </div>
             );
           })}
-        </div>
+        </div> */}
       </fieldset>
       <fieldset>
         <div className="form-group">
@@ -79,15 +116,7 @@ export const EditReview = () => {
           ></textarea>
         </div>
       </fieldset>
-      <div className="form-btn-container">
-        <button
-          className="arrow-emoji"
-          onClick={() => {
-            navigate(`/place/${review.placeId}`);
-          }}
-        >
-          <i className="fa-solid fa-circle-arrow-left"></i>
-        </button>
+      <div className="form-group">
         <button className="form-btn btn-secondary" type="submit">
           Save Review
         </button>

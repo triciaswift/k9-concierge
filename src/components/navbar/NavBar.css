@@ -11,9 +11,10 @@
 }
 
 .navbar-item {
-  flex-basis: 8%;
+  /* flex-basis: 8%; */
   list-style-type: none;
   color: var(--offWhite);
+  margin-right: 65px;
 }
 
 .navbar-link {

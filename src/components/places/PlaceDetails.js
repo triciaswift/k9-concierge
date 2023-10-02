@@ -71,7 +71,7 @@ export const PlaceDetails = ({ currentUser }) => {
         )}
       </h2>
       <section className="place-container">
-        <div>
+        <div className="place-description">
           <div>
             <span className="place-info">Address: </span>
             {place.address}
@@ -85,7 +85,7 @@ export const PlaceDetails = ({ currentUser }) => {
             {place.website}
           </div>
         </div>
-        <div className="place-description">
+        <div className="place-services">
           <span className="place-info">Offered Services: </span>
           <ul className="services">
             {place.offeredServices

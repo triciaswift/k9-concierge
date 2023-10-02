@@ -3,6 +3,7 @@ import "./Form.css";
 import { useState } from "react";
 import { postReview } from "../../services/reviewService";
 import { getDate } from "../../services/dateService";
+import { FaStar } from "react-icons/fa";
 
 export const NewReview = ({ currentUser }) => {
   const [newReview, setNewReview] = useState({
@@ -12,10 +13,14 @@ export const NewReview = ({ currentUser }) => {
     userId: 0,
     placeId: 0,
   });
+  const [rating, setRating] = useState(null);
+  const [hover, setHover] = useState(null);
+  const [showErrorMsg, setShowErrorMsg] = useState(false);
+
   const { placeId } = useParams();
   const navigate = useNavigate();
 
-  const ratingNumbers = [1, 2, 3, 4, 5];
+  // const ratingNumbers = [1, 2, 3, 4, 5];
 
   const handleInputChange = (event) => {
     const reviewCopy = { ...newReview };
@@ -23,7 +28,6 @@ export const NewReview = ({ currentUser }) => {
     setNewReview(reviewCopy);
   };
 
-  //! Play with the preventDefault() feature to see if necessary or not
   const handleSave = (event) => {
     event.preventDefault();
 
@@ -35,9 +39,13 @@ export const NewReview = ({ currentUser }) => {
       placeId: parseInt(placeId),
     };
 
-    postReview(newPlaceReview).then(() => {
-      navigate(-1);
-    });
+    if (rating) {
+      postReview(newPlaceReview).then(() => {
+        navigate(-1);
+      });
+    } else {
+      setShowErrorMsg(true);
+    }
   };
 
   return (
@@ -45,6 +53,46 @@ export const NewReview = ({ currentUser }) => {
       <h2 className="page-header">Add Review</h2>
       <fieldset>
         <div className="radio-group">
+          <div>Rating:</div>
+          {[...Array(5)].map((star, index) => {
+            const currentRating = index + 1;
+            return (
+              <label key={index}>
+                <input
+                  type="radio"
+                  name="rating"
+                  value={currentRating}
+                  onClick={() => {
+                    setRating(currentRating);
+                  }}
+                  onChange={handleInputChange}
+                />
+                <FaStar
+                  className="star"
+                  size={35}
+                  color={
+                    currentRating <= (hover || rating) ? "#ffc107" : "#e4e5e9"
+                  }
+                  onMouseEnter={() => setHover(currentRating)}
+                  onMouseLeave={() => setHover(null)}
+                />
+              </label>
+            );
+          })}
+        </div>
+
+        {showErrorMsg ? (
+          <div
+            className="error-message"
+            style={{ display: rating ? "none" : "block" }}
+          >
+            Please select a rating.
+          </div>
+        ) : (
+          ""
+        )}
+
+        {/* <div className="radio-group">
           <div>Rating:</div>
           {ratingNumbers.map((number, index) => {
             return (
@@ -62,7 +110,7 @@ export const NewReview = ({ currentUser }) => {
               </div>
             );
           })}
-        </div>
+        </div> */}
       </fieldset>
       <fieldset>
         <div className="form-group">
@@ -78,15 +126,7 @@ export const NewReview = ({ currentUser }) => {
           ></textarea>
         </div>
       </fieldset>
-      <div className="form-btn-container">
-        <button
-          className="arrow-emoji"
-          onClick={() => {
-            navigate(`/place/${placeId}`);
-          }}
-        >
-          <i className="fa-solid fa-circle-arrow-left"></i>
-        </button>
+      <div className="form-group">
         <button className="form-btn btn-secondary" type="submit">
           Save Review
         </button>

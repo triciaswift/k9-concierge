@@ -83,6 +83,7 @@ export const NewPlace = ({ currentUser }) => {
         <div className="form-group group">
           <div>Category:</div>
           <select
+            // className="form-control"
             name="categoryId"
             value={newPlace.categoryId}
             required
