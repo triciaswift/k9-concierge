@@ -11,13 +11,13 @@ export const NewReview = ({ currentUser }) => {
     body: "",
     date: "",
     userId: 0,
-    placeId: 0,
+    locationId: 0,
   });
   const [rating, setRating] = useState(null);
   const [hover, setHover] = useState(null);
   const [showErrorMsg, setShowErrorMsg] = useState(false);
 
-  const { placeId } = useParams();
+  const { locationId } = useParams();
   const navigate = useNavigate();
 
   // const ratingNumbers = [1, 2, 3, 4, 5];
@@ -31,16 +31,16 @@ export const NewReview = ({ currentUser }) => {
   const handleSave = (event) => {
     event.preventDefault();
 
-    const newPlaceReview = {
+    const newLocationReview = {
       rating: parseInt(newReview.rating),
       body: newReview.body,
       date: getDate(),
       userId: currentUser.id,
-      placeId: parseInt(placeId),
+      locationId: parseInt(locationId),
     };
 
     if (rating) {
-      postReview(newPlaceReview).then(() => {
+      postReview(newLocationReview).then(() => {
         navigate(-1);
       });
     } else {

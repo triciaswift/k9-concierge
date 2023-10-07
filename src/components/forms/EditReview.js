@@ -41,7 +41,7 @@ export const EditReview = () => {
       body: review.body,
       date: getDate(),
       userId: review.userId,
-      placeId: review.placeId,
+      locationId: review.locationId,
     };
 
     editReview(updateReview).then(() => {

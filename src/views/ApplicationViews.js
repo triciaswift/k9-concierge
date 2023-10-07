@@ -1,14 +1,14 @@
 import { Outlet, Route, Routes } from "react-router-dom";
 import { CategoriesList } from "../components/categories/CategoriesList";
 import { NavBar } from "../components/navbar/NavBar";
-import { PlacesList } from "../components/places/PlacesList";
-import { PlaceDetails } from "../components/places/PlaceDetails";
+import { LocationsList } from "../components/locations/LocationsList";
+import { LocationDetails } from "../components/locations/LocationDetails";
 import { useEffect, useState } from "react";
 import { Profile } from "../components/profile/Profile";
 import { EditProfile } from "../components/forms/EditProfile";
 import { EditReview } from "../components/forms/EditReview";
 import { NewReview } from "../components/forms/NewReview";
-import { NewPlace } from "../components/forms/NewPlace";
+import { NewLocation } from "../components/forms/NewLocation";
 import { FavoriteList } from "../components/favorites/FavoriteList";
 
 export const ApplicationViews = () => {
@@ -33,9 +33,12 @@ export const ApplicationViews = () => {
         }
       >
         <Route index element={<CategoriesList />} />
-        <Route path="category/:categoryId" element={<PlacesList />} />
-        <Route path="place/:placeId">
-          <Route index element={<PlaceDetails currentUser={currentUser} />} />
+        <Route path="category/:categoryId" element={<LocationsList />} />
+        <Route path="location/:locationId">
+          <Route
+            index
+            element={<LocationDetails currentUser={currentUser} />}
+          />
           <Route
             path="review"
             element={<NewReview currentUser={currentUser} />}
@@ -50,8 +53,8 @@ export const ApplicationViews = () => {
         </Route>
         <Route path="review/:reviewId" element={<EditReview />} />
         <Route
-          path="place/new"
-          element={<NewPlace currentUser={currentUser} />}
+          path="location/new"
+          element={<NewLocation currentUser={currentUser} />}
         />
         <Route
           path="favorites"

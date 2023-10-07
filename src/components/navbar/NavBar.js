@@ -25,8 +25,8 @@ export const NavBar = ({ currentUser }) => {
         </Link>
       </li>
       <li className="navbar-item">
-        <Link className="navbar-link" to="/place/new">
-          New Place
+        <Link className="navbar-link" to="/location/new">
+          New Location
         </Link>
       </li>
 
