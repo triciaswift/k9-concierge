@@ -1,48 +1,48 @@
 import { useEffect, useState } from "react";
-import "./Places.css";
-import { getPlaceById } from "../../services/placeService";
+import "./Locations.css";
+import { getLocationById } from "../../services/locationService";
 import { useNavigate, useParams } from "react-router-dom";
 import { Reviews } from "../reviews/Reviews";
 import {
   addFavorite,
-  getFavoriteByUserIdAndPlaceId,
+  getFavoriteByUserIdAndLocationId,
 } from "../../services/favoritesService";
 
-export const PlaceDetails = ({ currentUser }) => {
-  const [place, setPlace] = useState({});
+export const LocationDetails = ({ currentUser }) => {
+  const [location, setLocation] = useState({});
   const [userId, setUserId] = useState(0);
   const [userFavorite, setUserFavorite] = useState({});
-  const { placeId } = useParams(); // this is a string
+  const { locationId } = useParams(); // this is a string
 
   const navigate = useNavigate();
 
-  const getPlace = () => {
-    getPlaceById(placeId).then((placeObj) => {
-      setPlace(placeObj);
+  const getLocation = () => {
+    getLocationById(locationId).then((locationObj) => {
+      setLocation(locationObj);
     });
   };
 
   //! ignore squiggles, would give an infinite loop
   useEffect(() => {
-    getPlace();
-    getFavoriteByUserIdAndPlaceId(currentUser.id, placeId).then(
+    getLocation();
+    getFavoriteByUserIdAndLocationId(currentUser.id, locationId).then(
       (favoriteObj) => {
         setUserFavorite(favoriteObj);
       }
     );
-  }, [currentUser, placeId]);
+  }, [currentUser, locationId]);
 
   useEffect(() => {
-    const filteredReview = place.reviews?.find(
+    const filteredReview = location.reviews?.find(
       (review) => review.userId === currentUser.id
     );
     setUserId(filteredReview?.userId);
-  }, [currentUser, place]);
+  }, [currentUser, location]);
 
   const handleFavorite = () => {
     const newFavorite = {
       userId: currentUser.id,
-      placeId: parseInt(placeId),
+      locationId: parseInt(locationId),
     };
 
     addFavorite(newFavorite).then(() => {
@@ -56,12 +56,12 @@ export const PlaceDetails = ({ currentUser }) => {
         <button
           className="arrow-emoji arrow-btn"
           onClick={() => {
-            navigate(`/category/${place.categoryId}`);
+            navigate(`/category/${location.categoryId}`);
           }}
         >
           <i className="fa-solid fa-circle-arrow-left"></i>
         </button>
-        {place.name}
+        {location.name}
         {userFavorite ? (
           ""
         ) : (
@@ -70,26 +70,26 @@ export const PlaceDetails = ({ currentUser }) => {
           </button>
         )}
       </h2>
-      <section className="place-container">
-        <div className="place-description">
+      <section className="location-container">
+        <div className="location-description">
           <div>
-            <span className="place-info">Address: </span>
-            {place.address}
+            <span className="location-info">Address: </span>
+            {location.address}
           </div>
           <div>
-            <span className="place-info">Phone Number: </span>
-            {place.phoneNumber}
+            <span className="location-info">Phone Number: </span>
+            {location.phoneNumber}
           </div>
           <div>
-            <span className="place-info">Website: </span>
-            {place.website}
+            <span className="location-info">Website: </span>
+            {location.website}
           </div>
         </div>
-        <div className="place-services">
-          <span className="place-info">Offered Services: </span>
+        <div className="location-services">
+          <span className="location-info">Offered Services: </span>
           <ul className="services">
-            {place.offeredServices
-              ? place.offeredServices?.map((service, index) => {
+            {location.offeredServices
+              ? location.offeredServices?.map((service, index) => {
                   return (
                     <li className="service-item" key={index}>
                       {service}
@@ -119,13 +119,13 @@ export const PlaceDetails = ({ currentUser }) => {
           </div>
         </header>
         <div className="reviews">
-          {place.reviews
-            ? place.reviews.map((review) => {
+          {location.reviews
+            ? location.reviews.map((review) => {
                 return (
                   <Reviews
                     reviewId={review.id}
                     currentUser={currentUser}
-                    getPlace={getPlace}
+                    getLocation={getLocation}
                     key={review.id}
                   />
                 );

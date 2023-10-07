@@ -6,7 +6,7 @@ import { CommentList } from "../comments/CommentList";
 import { getCommentsByUserId } from "../../services/commentService";
 import { NewComment } from "../forms/NewComment";
 
-export const Reviews = ({ reviewId, currentUser, getPlace }) => {
+export const Reviews = ({ reviewId, currentUser, getLocation }) => {
   const [review, setReview] = useState({});
   const [comments, setComments] = useState([]);
   const [userComment, setUserComment] = useState({});
@@ -30,7 +30,7 @@ export const Reviews = ({ reviewId, currentUser, getPlace }) => {
 
   const handleDelete = () => {
     deleteReview(reviewId).then(() => {
-      getPlace();
+      getLocation();
     });
   };
 

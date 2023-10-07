@@ -1,6 +1,6 @@
 export const getFavoritesByUserId = (userId) => {
   return fetch(
-    `http://localhost:8088/favorites?_expand=place&userId=${userId}`
+    `http://localhost:8088/favorites?_expand=location&userId=${userId}`
   ).then((res) => res.json());
 };
 
@@ -20,9 +20,9 @@ export const addFavorite = (favorite) => {
   });
 };
 
-export const getFavoriteByUserIdAndPlaceId = (userId, placeId) => {
+export const getFavoriteByUserIdAndLocationId = (userId, locationId) => {
   return fetch(
-    `http://localhost:8088/favorites/?userId=${userId}&placeId=${placeId}`
+    `http://localhost:8088/favorites/?userId=${userId}&locationId=${locationId}`
   )
     .then((res) => res.json())
     .then((data) => data[0]);

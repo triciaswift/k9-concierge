@@ -36,10 +36,10 @@ export const FavoriteList = ({ currentUser }) => {
               <div
                 className="favorite-name"
                 onClick={() => {
-                  navigate(`/place/${favObj.placeId}`);
+                  navigate(`/location/${favObj.locationId}`);
                 }}
               >
-                {favObj.place?.name}
+                {favObj.location?.name}
               </div>
               <button
                 className="btn btn-secondary btn-favorite"

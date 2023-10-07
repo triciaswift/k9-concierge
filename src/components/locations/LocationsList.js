@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import "./Places.css";
-import { getPlacesByCategoryId } from "../../services/placeService";
+import "./Locations.css";
+import { getLocationByCategoryId } from "../../services/locationService";
 import { useNavigate, useParams } from "react-router-dom";
 import { getCategoryById } from "../../services/categoryService";
 
-export const PlacesList = () => {
-  const [places, setPlaces] = useState([]);
+export const LocationsList = () => {
+  const [locations, setLocations] = useState([]);
   const [category, setCategory] = useState([]);
 
   const { categoryId } = useParams(); // this is a string
@@ -13,8 +13,8 @@ export const PlacesList = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    getPlacesByCategoryId(categoryId).then((placesArr) => {
-      setPlaces(placesArr);
+    getLocationByCategoryId(categoryId).then((locationsArr) => {
+      setLocations(locationsArr);
     });
 
     getCategoryById(categoryId).then((catObj) => {
@@ -22,13 +22,13 @@ export const PlacesList = () => {
     });
   }, [categoryId]);
 
-  const handleRatingAverage = (place) => {
+  const handleRatingAverage = (location) => {
     let sum = 0;
     let average = 0;
-    for (let i = 0; i < place.reviews.length; i++) {
-      sum += place.reviews[i].rating;
+    for (let i = 0; i < location.reviews.length; i++) {
+      sum += location.reviews[i].rating;
     }
-    average = Math.round(sum / place.reviews?.length);
+    average = Math.round(sum / location.reviews?.length);
 
     return average;
   };
@@ -48,20 +48,20 @@ export const PlacesList = () => {
           className="category-img-two"
         />
       </div>
-      <section className="places-container">
-        {places.map((placeObj) => {
+      <section className="locations-container">
+        {locations.map((locationObj) => {
           return (
             <div
-              className="place-card"
-              key={placeObj.id}
+              className="location-card"
+              key={locationObj.id}
               onClick={() => {
-                navigate(`/place/${placeObj.id}`);
+                navigate(`/location/${locationObj.id}`);
               }}
             >
-              <div className="place-name">{placeObj.name}</div>
-              <div className="place-rating">
-                {handleRatingAverage(placeObj)
-                  ? `${handleRatingAverage(placeObj)} Stars`
+              <div className="location-name">{locationObj.name}</div>
+              <div className="location-rating">
+                {handleRatingAverage(locationObj)
+                  ? `${handleRatingAverage(locationObj)} Stars`
                   : "No ratings yet"}
               </div>
             </div>
