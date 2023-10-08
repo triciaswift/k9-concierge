@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 export const FavoriteList = ({ currentUser }) => {
   const [favorites, setFavorites] = useState([]);
+  const [favoritesAlphabetically, setFavAlphabetically] = useState([]);
   const navigate = useNavigate();
 
   const getAllFavorites = () => {
@@ -20,6 +21,17 @@ export const FavoriteList = ({ currentUser }) => {
     getAllFavorites();
   }, [currentUser]);
 
+  useEffect(() => {
+    let sortedFavorites = favorites.sort((c1, c2) =>
+      c1.location.name > c2.location.name
+        ? 1
+        : c1.location.name < c2.location.name
+        ? -1
+        : 0
+    );
+    setFavAlphabetically(sortedFavorites);
+  }, [favorites]);
+
   const handleDelete = (favId) => {
     deleteFavorite(favId).then(() => {
       getAllFavorites();
@@ -30,7 +42,7 @@ export const FavoriteList = ({ currentUser }) => {
     <>
       <h2 className="page-header">Favorites</h2>
       <section className="favorites-container">
-        {favorites.map((favObj) => {
+        {favoritesAlphabetically.map((favObj) => {
           return (
             <div className="favorite-card" key={favObj.id} value={favObj.id}>
               <div

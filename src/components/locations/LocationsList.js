@@ -1,12 +1,20 @@
 import { useEffect, useState } from "react";
 import "./Locations.css";
+import { getAllCities } from "../../services/cityService";
 import { getLocationByCategoryId } from "../../services/locationService";
 import { useNavigate, useParams } from "react-router-dom";
 import { getCategoryById } from "../../services/categoryService";
+import { CityFilterBar } from "./CityFilterBar";
+import { FaStar } from "react-icons/fa";
 
 export const LocationsList = () => {
   const [locations, setLocations] = useState([]);
   const [category, setCategory] = useState([]);
+  const [filteredLocations, setFilteredLocations] = useState([]);
+  const [cities, setCities] = useState([]);
+  const [cityChoice, setCityChoice] = useState(0);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [locationsAlphabetically, setLocationsAlphabetically] = useState([]);
 
   const { categoryId } = useParams(); // this is a string
 
@@ -21,6 +29,37 @@ export const LocationsList = () => {
       setCategory(catObj);
     });
   }, [categoryId]);
+
+  useEffect(() => {
+    getAllCities().then((cityArr) => {
+      setCities(cityArr);
+    });
+  }, []);
+
+  useEffect(() => {
+    if (cityChoice !== 0) {
+      const cityLocations = locations.filter(
+        (location) => location.cityId === cityChoice
+      );
+      setFilteredLocations(cityLocations);
+    } else {
+      setFilteredLocations(locations);
+    }
+  }, [cityChoice, locations]);
+
+  useEffect(() => {
+    const foundLocations = locations.filter((location) =>
+      location.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredLocations(foundLocations);
+  }, [searchTerm, locations]);
+
+  useEffect(() => {
+    let sortedLocations = filteredLocations.sort((c1, c2) =>
+      c1.name > c2.name ? 1 : c1.name < c2.name ? -1 : 0
+    );
+    setLocationsAlphabetically(sortedLocations);
+  }, [filteredLocations]);
 
   const handleRatingAverage = (location) => {
     let sum = 0;
@@ -48,26 +87,47 @@ export const LocationsList = () => {
           className="category-img-two"
         />
       </div>
-      <section className="locations-container">
-        {locations.map((locationObj) => {
-          return (
-            <div
-              className="location-card"
-              key={locationObj.id}
-              onClick={() => {
-                navigate(`/location/${locationObj.id}`);
-              }}
-            >
-              <div className="location-name">{locationObj.name}</div>
-              <div className="location-rating">
-                {handleRatingAverage(locationObj)
-                  ? `${handleRatingAverage(locationObj)} Stars`
-                  : "No ratings yet"}
+      <div className="locations-container">
+        <CityFilterBar
+          cities={cities}
+          setCityChoice={setCityChoice}
+          setSearchTerm={setSearchTerm}
+        />
+        <section className="locations">
+          {locationsAlphabetically.map((locationObj) => {
+            return (
+              <div
+                className="location-card"
+                key={locationObj.id}
+                onClick={() => {
+                  navigate(`/location/${locationObj.id}`);
+                }}
+              >
+                <div className="location-name">{locationObj.name}</div>
+
+                <div className="location-rating">
+                  {[...Array(5)].map((star, index) => {
+                    const currentRating = index + 1;
+                    return (
+                      <div key={index}>
+                        <FaStar
+                          className="star-1"
+                          size={35}
+                          color={
+                            currentRating <= handleRatingAverage(locationObj)
+                              ? "#ffc107"
+                              : "#e4e5e9"
+                          }
+                        />
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
-          );
-        })}
-      </section>
+            );
+          })}
+        </section>
+      </div>
     </>
   );
 };

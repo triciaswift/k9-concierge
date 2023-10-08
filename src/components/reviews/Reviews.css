@@ -69,3 +69,12 @@
 .comment-container {
   margin-top: 1rem;
 }
+
+.rating-block {
+  display: flex;
+  align-items: center;
+}
+
+.rating {
+  display: flex;
+}
