@@ -3,9 +3,13 @@ import "./Form.css";
 import { getAllCategories } from "../../services/categoryService";
 import { postLocation } from "../../services/locationService";
 import { useNavigate } from "react-router-dom";
+import { getAllCities } from "../../services/cityService";
 
 export const NewLocation = ({ currentUser }) => {
   const [allCategories, setAllCategories] = useState([]);
+  const [allCities, setAllCities] = useState([]);
+  const [catAlphabetically, setCatAlphabetically] = useState([]);
+  const [cityAlphabetically, setCityAlphabetically] = useState([]);
   const [newLocation, setNewLocation] = useState({
     name: "",
     address: "",
@@ -14,6 +18,7 @@ export const NewLocation = ({ currentUser }) => {
     offeredServices: "",
     categoryId: 0,
     userId: 0,
+    cityId: 0,
   });
 
   const navigate = useNavigate();
@@ -22,7 +27,23 @@ export const NewLocation = ({ currentUser }) => {
     getAllCategories().then((catArr) => {
       setAllCategories(catArr);
     });
+
+    getAllCities().then((cityArr) => {
+      setAllCities(cityArr);
+    });
   }, []);
+
+  useEffect(() => {
+    let sortedCategories = allCategories.sort((c1, c2) =>
+      c1.name > c2.name ? 1 : c1.name < c2.name ? -1 : 0
+    );
+    setCatAlphabetically(sortedCategories);
+
+    let sortedCities = allCities.sort((c1, c2) =>
+      c1.name > c2.name ? 1 : c1.name < c2.name ? -1 : 0
+    );
+    setCityAlphabetically(sortedCities);
+  }, [allCategories, allCities]);
 
   const handleInputChange = (event) => {
     const locationCopy = { ...newLocation };
@@ -41,6 +62,7 @@ export const NewLocation = ({ currentUser }) => {
       offeredServices: newLocation.offeredServices,
       categoryId: parseInt(newLocation.categoryId),
       userId: currentUser.id,
+      cityId: parseInt(newLocation.cityId),
     };
 
     const string = newLocation.offeredServices.replace(", ", ",");
@@ -90,7 +112,7 @@ export const NewLocation = ({ currentUser }) => {
             onChange={handleInputChange}
           >
             <option value={""}>Please select a category</option>
-            {allCategories.map((category) => {
+            {catAlphabetically.map((category) => {
               return (
                 <option key={category.id} value={category.id}>
                   {category.name}
@@ -112,6 +134,25 @@ export const NewLocation = ({ currentUser }) => {
             required
             onChange={handleInputChange}
           />
+        </div>
+        <div className="form-group group-two">
+          <div>City:</div>
+          <select
+            // className="form-control"
+            name="cityId"
+            value={newLocation.cityId}
+            required
+            onChange={handleInputChange}
+          >
+            <option value={""}>Please select a city</option>
+            {cityAlphabetically.map((city) => {
+              return (
+                <option key={city.id} value={city.id}>
+                  {city.name}
+                </option>
+              );
+            })}
+          </select>
         </div>
         <div className="form-group group-two">
           <label>Website:</label>
