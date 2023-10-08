@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 export const CategoriesList = () => {
   const [categories, setCategories] = useState([]);
+  const [categoriesAlphabetically, setCatAlphabetically] = useState([]);
 
   const navigate = useNavigate();
 
@@ -15,6 +16,13 @@ export const CategoriesList = () => {
     });
   }, []);
 
+  useEffect(() => {
+    let sortedCategories = categories.sort((c1, c2) =>
+      c1.name > c2.name ? 1 : c1.name < c2.name ? -1 : 0
+    );
+    setCatAlphabetically(sortedCategories);
+  }, [categories]);
+
   return (
     <>
       <header>
@@ -22,7 +30,7 @@ export const CategoriesList = () => {
       </header>
       <section className="categories-container">
         <div className="category-items">
-          {categories.map((category) => {
+          {categoriesAlphabetically.map((category) => {
             return (
               <div
                 className="category-card"

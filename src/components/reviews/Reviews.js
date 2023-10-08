@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { CommentList } from "../comments/CommentList";
 import { getCommentsByUserId } from "../../services/commentService";
 import { NewComment } from "../forms/NewComment";
+import { FaStar } from "react-icons/fa";
 
 export const Reviews = ({ reviewId, currentUser, getLocation }) => {
   const [review, setReview] = useState({});
@@ -77,9 +78,24 @@ export const Reviews = ({ reviewId, currentUser, getLocation }) => {
             {review.date}
           </div>
         </div>
-        <div>
+        <div className="rating-block">
           <span className="review-info">Rating: </span>
-          {review.rating} Stars
+          <div className="rating">
+            {[...Array(5)].map((star, index) => {
+              const currentRating = index + 1;
+              return (
+                <div key={index}>
+                  <FaStar
+                    className="star-1"
+                    size={25}
+                    color={
+                      currentRating <= review.rating ? "#ffc107" : "#e4e5e9"
+                    }
+                  />
+                </div>
+              );
+            })}
+          </div>
         </div>
         <div>
           <span className="review-info">Review: </span>
