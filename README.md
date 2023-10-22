@@ -1,8 +1,8 @@
 # K9 Concierge
 
-> a locator for all things dog owners would need
+> a locator for all things a dog owner would need
 
-## The Ideas
+## The Idea
 
 As a dog owner, whenever I end up in a new city and need to locate all the necessities for my dog, I'm always searching for a vet or a place to board my dog individually. I wanted to create an app that had everything in one place so I could quickly find top rated locations for anything I might need for my dog.
 
@@ -21,7 +21,7 @@ Features include:
 
 ## ERD
 
-<img src="./src/assets/K9-Concierge-ERD.png>"
+<img src="./src/assets/K9-Concierge-ERD.png">
 
 ## Wireframe
 
@@ -43,8 +43,8 @@ cd k9-concierge
 3. Launch the client.
 
 ```sh
-    npm install
-    npm start
+npm install
+npm start
 ```
 
 ### Demo User Credentials
