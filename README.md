@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+# K9 Concierge
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> a locator for all things dog owners would need
 
-## Available Scripts
+## The Ideas
 
-In the project directory, you can run:
+As a dog owner, whenever I end up in a new city and need to locate all the necessities for my dog, I'm always searching for a vet or a place to board my dog individually. I wanted to create an app that had everything in one place so I could quickly find top rated locations for anything I might need for my dog.
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This app allows dog owners to locate vets, boarding, parks, pet stores, groomers, and dog bakeries all in one place. <br />
+Features include:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Any user can create a new location for one of the six categories
+- Any user can leave a rating on a location
+- Any user can leave a comment on another user's rating
+- A profile page that shows the user's name, information about their dog, and how many ratings they've left
+- A favorite page where users can quickly find all the locations they love
+- The ability to sort by different cities as well as by different categories
+- Anything a user can create they can also edit or delete with the exception of the location itself.
 
-### `npm test`
+## ERD
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<img src="./src/assets/K9-Concierge-ERD.png>"
 
-### `npm run build`
+## Wireframe
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This was the initial wireframe to meet MVP: <br />
+<img src="./src/assets/mvp-wireframe.png">
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Running This Application
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Clone this repository
 
-### `npm run eject`
+```sh
+git clone git@github.com:triciaswift/k9-concierge.git
+cd k9-concierge
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. Access the data
+   https://github.com/triciaswift/k9-api
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. Launch the client.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```sh
+    npm install
+    npm start
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Demo User Credentials
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<p>
+Email: hermione_granger@gryffindor.com <br />
+</p>
