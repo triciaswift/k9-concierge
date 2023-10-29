@@ -28,6 +28,9 @@ Features include:
 This was the initial wireframe to meet MVP: <br />
 <img src="./src/assets/mvp-wireframe.png">
 
+## Video Walkthrough 
+[Link to K9 Concierge Video Walkthrough](https://www.loom.com/share/1ac2fc870af74d4e84134b653fb02c4e?sid=020ddee5-11f0-4911-9430-0f32371082fa)
+
 ## Running This Application
 
 1. Clone this repository
