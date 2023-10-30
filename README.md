@@ -2,6 +2,9 @@
 
 > a locator for all things a dog owner would need
 
+## Video Walkthrough 
+[Check out a video of my app!](https://www.loom.com/share/1ac2fc870af74d4e84134b653fb02c4e?sid=020ddee5-11f0-4911-9430-0f32371082fa)
+
 ## The Idea
 
 As a dog owner, whenever I end up in a new city and need to locate all the necessities for my dog, I'm always searching for a vet or a place to board my dog individually. I wanted to create an app that had everything in one place so I could quickly find top rated locations for anything I might need for my dog.
@@ -27,9 +30,6 @@ Features include:
 
 This was the initial wireframe to meet MVP: <br />
 <img src="./src/assets/mvp-wireframe.png">
-
-## Video Walkthrough 
-[Link to K9 Concierge Video Walkthrough](https://www.loom.com/share/1ac2fc870af74d4e84134b653fb02c4e?sid=020ddee5-11f0-4911-9430-0f32371082fa)
 
 ## Running This Application
 
